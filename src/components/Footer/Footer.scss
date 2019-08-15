@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $footer;
+	height: 80px;
+
+	.container {
+		display: flex;
+
+		.btn {
+			@include hpe-bold;
+			font-size: 17px;
+			line-height: 20px;
+			padding: 9px 42px;
+			margin-left: auto;
+			border-radius: 0 4px 0 4px;
+
+			&-prev {
+				color: $white;
+				background-color: $dark-btn;
+				border-color: $dark-btn;
+			}
+
+			&-next {
+				color: $white;
+				background-color: $primary-btn;
+				border-color: $primary-btn;
+
+				&.disabled,
+				&:disabled {
+					opacity: 0.65;
+				}
+			}
+
+			&-pdf {
+				color: $gray;
+				background-color: $light-btn;
+				border-color: $light-btn;
+			}
+		}
+	}
+}

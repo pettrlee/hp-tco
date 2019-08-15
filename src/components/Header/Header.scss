@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+header {
+	background-color: $header;
+
+	.brand {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		h1 {
+			@include hpe-bold;
+			font-size: 28px;
+			line-height: 32px;
+			padding: 0;
+			margin: 25px;
+			color: $white;
+		}
+	}
+
+	.nav-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100px;
+		text-align: center;
+		@include hpe-bold;
+		font-size: 20px;
+		line-height: 23px;
+		color: $white;
+
+		img {
+			margin-right: 18px;
+		}
+
+		&.active {
+			background-color: $blue;
+		}
+	}
+}

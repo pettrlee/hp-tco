@@ -1,0 +1,27 @@
+@font-face{
+    font-family: 'HP Simplified';
+    src: url(./hpe-regular.eot);
+    src: url(./hpe-regular.eot?#iefix) format('embedded-opentype'),
+    url('./hpe-regular.woff') format('woff'),
+    url('./hpe-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'HP Simplified light';
+    src: url(./hpe-light.eot);
+    src: url(./hpe-light.eot?#iefix) format('embedded-opentype'),
+    url('./hpe-light.woff') format('woff'),
+    url('./hpe-light.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'HP Simplified bold';
+    src: url(./hpe-bold.eot);
+    src: url(./hpe-bold.eot?#iefix) format('embedded-opentype'),
+    url('./hpe-bold.woff') format('woff'),
+    url('./hpe-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

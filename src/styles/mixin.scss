@@ -1,0 +1,21 @@
+@import "../../fonts/fonts.scss";
+
+@mixin hpe-regular {
+	font-family: "HP Simplified", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+
+@mixin hpe-light {
+	font-family: "HP Simplified light", Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+}
+
+@mixin hpe-bold {
+	font-family: "HP Simplified bold", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+@mixin pm-0 {
+	padding: 0;
+	margin: 0;
+}
