@@ -1,4 +1,4 @@
-@import "../../fonts/fonts.scss";
+@import "../fonts/fonts.scss";
 
 @mixin hpe-regular {
 	font-family: "HP Simplified", Arial, Helvetica, sans-serif;
@@ -18,4 +18,171 @@
 @mixin pm-0 {
 	padding: 0;
 	margin: 0;
+}
+
+@mixin focus {
+	outline: none;
+	border-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+@mixin flex {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flexMiddle {
+	@include flex;
+	justify-content: space-between;
+}
+
+@mixin flexCenter {
+	@include flex;
+	justify-content: center;
+}
+
+@mixin form-container {
+	border: 1px solid $gray-border;
+	margin-top: 15px;
+}
+
+@mixin form-title {
+	@include flexMiddle;
+	min-height: 90px;
+
+	h2 {
+		display: flex;
+		align-items: center;
+		margin: 0 0 0 25px;
+		@include hpe-bold;
+		font-size: 24px;
+		line-height: 36px;
+		color: $white;
+
+		img {
+			margin-right: 15px;
+		}
+	}
+}
+
+@mixin form-sub-title {
+	@include flexMiddle;
+	min-height: 40px;
+
+	h3 {
+		display: flex;
+		align-items: center;
+		margin: 0 0 0 30px;
+		@include hpe-bold;
+		font-size: 18px;
+		line-height: 21px;
+		color: $white;
+	}
+}
+
+@mixin form-h4 {
+	color: $gray;
+	@include hpe-regular;
+	font-size: 15px;
+	line-height: 17px;
+	margin: 0;
+}
+
+@mixin form {
+	.form {
+		&-group {
+			display: flex;
+			align-items: center;
+			padding: 15px;
+			margin-bottom: 0;
+		}
+		&-label {
+			color: $label;
+			@include hpe-regular;
+			font-size: 17px;
+			line-height: 20px;
+			padding: 0;
+			margin: 0 0 0 15px;
+		}
+
+		&-control {
+			cursor: pointer;
+			color: $select;
+			@include hpe-regular;
+			font-size: 14px;
+			line-height: 16px;
+			height: auto;
+			border: 2px solid $border;
+			border-radius: 0;
+			padding: 12px 36px 12px 12px;
+			margin: 15px 0;
+
+			option {
+				color: $select;
+				@include hpe-regular;
+				font-size: 14px;
+				line-height: 16px;
+			}
+		}
+
+		&-check {
+			position: relative;
+			margin: 13px 30px 13px 0;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+
+			label {
+				color: $black;
+				@include hpe-regular;
+				font-size: 15px;
+				line-height: 17px;
+				position: relative;
+				padding: 0;
+
+				input[type="checkbox"] {
+					cursor: pointer;
+					position: absolute;
+					top: 0;
+					left: 0;
+					opacity: 0;
+					height: 0;
+					width: 0;
+
+					&:checked ~ .checkbox {
+						background-color: $dark-blue;
+						border: 2px solid $blue-border;
+
+						&::after {
+							content: "";
+							position: absolute;
+							left: 5px;
+							top: 12px;
+							background: $white;
+							width: 2px;
+							height: 2px;
+							box-shadow: 2px 0 0 $white, 4px 0 0 $white, 6px 0 0 $white, 6px -2px 0 $white,
+								6px -4px 0 $white, 6px -6px 0 $white, 6px -8px 0 $white, 6px -10px 0 $white,
+								6px -12px 0 $white, 6px -14px 0 $white;
+							transform: rotate(45deg);
+						}
+					}
+				}
+
+				.checkbox {
+					content: "";
+					display: inline-block;
+					vertical-align: middle;
+					height: 26px;
+					width: 26px;
+					margin-right: 10px;
+					background-color: $white;
+					border: 2px solid $border;
+				}
+			}
+		}
+	}
 }

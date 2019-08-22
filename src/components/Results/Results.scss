@@ -1,0 +1,420 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+@mixin infograph {
+	display: inline-block;
+	text-align: center;
+
+	span {
+		color: $black;
+		@include hpe-regular;
+		font-size: 15px;
+		line-height: 17px;
+		margin: 0 30px 7px 0;
+	}
+
+	.graph {
+		border-bottom: 2px solid $graph-border;
+		padding-right: 30px;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 100px;
+		}
+	}
+
+	p {
+		color: $black;
+		@include hpe-regular;
+		font-size: 17px;
+		line-height: 20px;
+		margin: 10px 30px 18px 0;
+	}
+}
+
+@mixin tableCopy {
+	display: block;
+	color: $dark-gray;
+	font-size: 20px;
+	line-height: 23px;
+}
+
+.apc {
+	background-color: $lighter-gray;
+	padding: 40px;
+
+	h2 {
+		color: $dark;
+		@include hpe-bold;
+		font-size: 36px;
+		line-height: 36px;
+		margin: 0 0 40px 15px;
+	}
+
+	.flex {
+		display: flex;
+	}
+
+	.infograph {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+
+		.hp {
+			@include infograph;
+
+			.graph {
+				&::before {
+					height: 128px;
+					background-color: #0096d6;
+				}
+			}
+		}
+
+		.competitive {
+			@include infograph;
+
+			.graph {
+				&::before {
+					height: 176px;
+					background-color: #b9b9b9;
+				}
+			}
+		}
+	}
+
+	.info {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-direction: column;
+
+		.content {
+			@include flexCenter;
+			flex-direction: column;
+			height: 110px;
+			width: 230px;
+			background-color: $dark-blue;
+			margin: 0 0 16px;
+
+			p {
+				color: $white;
+				@include hpe-bold;
+				font-size: 29px;
+				line-height: 33px;
+				margin: 0 0 8px;
+			}
+
+			span {
+				color: #ffffff;
+				@include hpe-regular font-size: 15px;
+				line-height: 17px;
+			}
+		}
+	}
+
+	.estimate {
+		max-width: 570px;
+		border: 1px solid $gray-border;
+
+		.head {
+			background-color: $dark-blue;
+			border-bottom: 1px solid $gray-border;
+
+			h3 {
+				color: $white;
+				@include hpe-bold;
+				font-size: 18px;
+				line-height: 36px;
+				margin: 12px 12px;
+			}
+		}
+
+		.product {
+			background-color: $white;
+			border-bottom: 1px solid $gray-border;
+			@include flexMiddle;
+
+			p {
+				@include hpe-regular;
+				@include tableCopy;
+				border-right: 1px solid $gray-border;
+				padding: 18px 5px;
+				margin: 0;
+				flex: 1;
+			}
+
+			span {
+				@include hpe-regular;
+				@include tableCopy;
+				width: 128px;
+				margin-left: auto;
+				text-align: center;
+			}
+		}
+
+		.saving {
+			background-color: $apc-gray;
+			@include flexMiddle;
+
+			p {
+				@include hpe-bold;
+				@include tableCopy;
+				border-right: 1px solid $gray-border;
+				padding: 18px 5px;
+				margin: 0;
+				flex: 1;
+			}
+
+			span {
+				@include hpe-bold;
+				@include tableCopy;
+				width: 128px;
+				margin-left: auto;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.compare {
+	h2 {
+		color: $dark;
+		@include hpe-bold;
+		font-size: 36px;
+		line-height: 36px;
+		margin: 40px 0 20px;
+	}
+
+	.table {
+		margin-bottom: 20px;
+
+		&-bordered {
+			border: 1px solid $table-border;
+		}
+
+		thead {
+			th {
+				text-align: center;
+				h3 {
+					color: $dark;
+					@include hpe-bold;
+					font-size: 22px;
+					line-height: 22px;
+
+					small {
+						opacity: 0.7;
+						@include hpe-regular;
+						font-size: 18px;
+						line-height: 21px;
+					}
+				}
+			}
+		}
+
+		tr {
+			td {
+				&:only-child {
+					background-color: $lighter-gray;
+
+					h4 {
+						color: $dark-gray;
+						@include hpe-bold;
+						font-size: 18px;
+						line-height: 21px;
+						margin: 0 0 0 15px;
+
+						small {
+							opacity: 0.7;
+							@include hpe-regular;
+							font-size: 15px;
+							line-height: 17px;
+						}
+					}
+				}
+
+				&:not(:first-child) {
+					width: 495px;
+				}
+
+				&:first-child {
+					width: 250px;
+				}
+
+				p {
+					color: $dark-gray;
+					@include hpe-regular;
+					font-size: 17px;
+					line-height: 19px;
+					margin: 0 0 0 15px;
+				}
+
+				.none {
+					opacity: 0.4;
+					color: $dark-gray;
+					@include hpe-regular;
+					font-size: 17px;
+					line-height: 28px;
+				}
+
+				.program {
+					box-sizing: border-box;
+					border: 1px solid $table-border;
+					border-radius: 1px;
+					background-color: $program-gray;
+					box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+					margin: 0 auto 10px auto;
+
+					.cta {
+						min-height: 72px;
+						width: 452px;
+						display: flex;
+						align-items: center;
+
+						svg {
+							margin: 17px 20px;
+						}
+
+						p {
+							color: $dark;
+							@include hpe-regular;
+							font-size: 17px;
+							line-height: 18px;
+							margin: 0;
+						}
+
+						.btn-trigger {
+							@include flexCenter;
+							flex-direction: column;
+							margin-left: auto;
+							padding: 0;
+							width: 26px;
+							height: 26px;
+							border: 2px solid $table-border;
+							border-radius: 50%;
+							transition: 0.2s all ease;
+							transform: rotate(360deg);
+
+							span {
+								display: block;
+								background-color: $table-border;
+								width: 12px;
+								height: 2px;
+								position: relative;
+								transition: 0.2s all ease;
+								transform: rotate(0);
+
+								&:nth-of-type(1) {
+									top: 1px;
+								}
+
+								&:nth-of-type(2) {
+									top: -1px;
+									transform: rotate(90deg);
+								}
+							}
+
+							&.collapsed {
+								transform: rotate(0);
+
+								span {
+									&:nth-of-type(2) {
+										top: -1px;
+										transform: rotate(0);
+									}
+								}
+							}
+						}
+					}
+
+					.content {
+						padding: 20px;
+						display: none;
+
+						p {
+							color: $dark;
+							@include hpe-regular;
+							font-size: 14px;
+							line-height: 18px;
+							margin: 0;
+						}
+
+						h5 {
+							color: $dark;
+							@include hpe-bold;
+							font-size: 17px;
+							line-height: 18px;
+							margin: 12px 0;
+						}
+
+						.indentedList {
+							margin-bottom: 10px;
+							text-indent: -15px;
+							padding-left: 15px;
+
+							b {
+								color: $dark;
+								@include hpe-bold;
+							}
+						}
+
+						.btn-detail {
+							border-radius: 0 4px 0 4px;
+							background-color: $dark-blue;
+							height: 32px;
+							width: 128px;
+							color: $white;
+							@include hpe-bold;
+							font-size: 15px;
+							line-height: 17px;
+						}
+
+						&.collapsed {
+							display: block;
+						}
+					}
+				}
+
+				.info {
+					height: 80px;
+					width: 450px;
+					background-color: $dark-blue;
+					@include flexCenter;
+					flex-direction: column;
+					margin: 0 auto;
+
+					span {
+						color: $white;
+						@include hpe-regular;
+						font-size: 17px;
+						line-height: 18px;
+					}
+
+					p {
+						color: $white;
+						@include hpe-regular;
+						font-size: 30px;
+						line-height: 35px;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.discalimer {
+	margin-bottom: 150px;
+
+	.copy {
+		padding-left: 0;
+		p {
+			color: $discalimer;
+			@include hpe-regular;
+			font-size: 12px;
+			line-height: 14px;
+			margin-bottom: 10px;
+		}
+	}
+}

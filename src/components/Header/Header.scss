@@ -6,9 +6,7 @@ header {
 	margin: 0 0 41px;
 
 	.brand {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		@include flexMiddle;
 
 		h1 {
 			@include hpe-bold;
@@ -21,10 +19,8 @@ header {
 	}
 
 	.nav-item {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100px;
+		@include flexCenter;
+		min-height: 100px;
 		text-align: center;
 		@include hpe-bold;
 		font-size: 20px;

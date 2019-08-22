@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.pagewide {
+	@include form-container;
+	@include form;
+
+	.title {
+		background-color: $dark-blue;
+		@include form-title;
+	}
+
+	.sub-title {
+		background-color: $blue;
+		@include form-sub-title;
+	}
+
+	h4 {
+		@include form-h4;
+	}
+}
+
+form {
+	margin-bottom: 150px;
+	.competitive {
+		@include form-container;
+		@include form;
+
+		.title {
+			background-color: $gray;
+			@include form-title;
+		}
+
+		.sub-title {
+			background-color: $light-gray;
+			@include form-sub-title;
+		}
+	}
+	.form-control {
+		background-image: url(./arrowDown.png);
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		&::-ms-expand {
+			display: none;
+		}
+	}
+}

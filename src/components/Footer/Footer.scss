@@ -2,13 +2,11 @@
 @import "../../styles/mixin.scss";
 
 footer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	@include flexMiddle;
 	background-color: $footer;
 	height: 80px;
 
-	.container {
+	.row {
 		display: flex;
 
 		.btn {
@@ -16,30 +14,51 @@ footer {
 			font-size: 17px;
 			line-height: 20px;
 			padding: 9px 42px;
-			margin-left: auto;
 			border-radius: 0 4px 0 4px;
 
 			&-prev {
+				@include flexMiddle;
 				color: $white;
 				background-color: $dark-btn;
 				border-color: $dark-btn;
+				margin-right: auto;
+				padding: 0;
+				border: none;
+
+				img {
+					margin: 0 14px 0 9px;
+				}
+
+				&:focus {
+					@include focus;
+				}
 			}
 
 			&-next {
 				color: $white;
 				background-color: $primary-btn;
 				border-color: $primary-btn;
+				margin-left: auto;
 
 				&.disabled,
 				&:disabled {
 					opacity: 0.65;
 				}
+
+				&:focus {
+					@include focus;
+				}
 			}
 
 			&-pdf {
-				color: $gray;
+				color: $dark-gray;
 				background-color: $light-btn;
 				border-color: $light-btn;
+				margin-left: auto;
+
+				&:focus {
+					@include focus;
+				}
 			}
 		}
 	}

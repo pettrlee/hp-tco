@@ -6,7 +6,7 @@ import './Header.scss';
 import printerLogo from './printer.png';
 import resultLogo from './result.png';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
             <Container>
@@ -14,25 +14,22 @@ const Header = () => {
                     <Col xs={12} sm={6} className="brand">
                         <h1>A3 PageWide TCO Tool</h1>
                     </Col>
-                    <Col xs={6} sm={3} className="nav-item active">
+                    <Col xs={6} sm={3} className={"nav-item" + (props.selectActive ? ' active' : '')}>
                         <img
                             width={40}
                             height={32}
                             src={printerLogo}
-                            alt="Select Device"
-                        />
+                            alt="Select Device" />
                         Select Device
                     </Col>
-                    <Col xs={6} sm={3} className="nav-item">
+                    <Col xs={6} sm={3} className={"nav-item" + (props.resultsActive ? ' active' : '')}>
                         <img
                             width={40}
                             height={37}
                             src={resultLogo}
-                            alt="Results"
-                        />
+                            alt="Results" />
                         Results
                     </Col>
-
                 </Row>
             </Container>
         </header>
