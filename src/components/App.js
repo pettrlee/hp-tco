@@ -105,7 +105,7 @@ class App extends Component {
 						pagewideMoneyback={this.statepagewideMoneyback}
 						pagewideRecycle={this.state.pagewideRecycle}
 						competitiveBrand={this.state.competitiveBrand}
-						competitiveModel={this.state.programCollapsed}
+						competitiveModel={this.state.competitiveModel}
 						competitivePrint={this.state.competitivePrint}
 					/>
 				}

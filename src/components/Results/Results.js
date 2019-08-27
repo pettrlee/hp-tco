@@ -33,7 +33,6 @@ const Results = (props) => {
 
     const fiveYearSaving = competitiveModelTco - hpModelTco;
     const annualSaving = fiveYearSaving / 5;
-    const saving = competitiveModelTco > hpModelTco;
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -71,12 +70,12 @@ const Results = (props) => {
                             <Col sm="6" className="infograph">
                                 <div className="hp">
                                     <span>{formatter.format(hpModelTco)}</span>
-                                    <div className={"graph" + (props.moneybacKToggle ? " high" : " low")}></div>
+                                    <div className={"graph" + (hpModelTco > competitiveModelTco ? " high" : " low")}></div>
                                     <p>HP PageWide</p>
                                 </div>
                                 <div className="competitive">
                                     <span>{formatter.format(competitiveModelTco)}</span>
-                                    <div className={"graph" + (props.moneybacKToggle ? " low" : " high")}></div>
+                                    <div className={"graph" + (competitiveModelTco > hpModelTco ? " high" : " low")}></div>
                                     <p>{competitiveBrand}</p>
                                 </div>
                             </Col>
