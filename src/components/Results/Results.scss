@@ -108,7 +108,8 @@
 
 			span {
 				color: #ffffff;
-				@include hpe-regular font-size: 15px;
+				@include hpe-regular;
+				font-size: 15px;
 				line-height: 17px;
 			}
 		}
