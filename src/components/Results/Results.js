@@ -3,8 +3,6 @@ import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import './Results.scss'
 
 // image
-// import { ReactComponent as Plus } from './plus.svg';
-// import { ReactComponent as Min } from './min.svg';
 import { ReactComponent as Star } from './star.svg';
 import { ReactComponent as Printer } from './printer.svg';
 import pagewideImage from './pagewide.png'
