@@ -36,14 +36,17 @@
 			@include form-sub-title;
 		}
 	}
-	.form-control {
-		background-image: url(./arrowDown.png);
-		background-repeat: no-repeat;
-		background-position: right 10px center;
+	select.form-control {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		&::-ms-expand {
 			display: none;
+		}
+
+		&:not(:disabled) {
+			background-image: url(./arrowDown.png);
+			background-repeat: no-repeat;
+			background-position: right 10px center;
 		}
 	}
 }
