@@ -124,6 +124,10 @@
 				font-size: 14px;
 				line-height: 16px;
 			}
+
+			&:disabled {
+				cursor: default;
+			}
 		}
 
 		&-check {

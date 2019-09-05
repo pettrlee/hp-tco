@@ -146,7 +146,8 @@ const SelectForm = (props) => {
                             as="select"
                             name="printPerMonth"
                             value={props.printPerMonth}
-                            onChange={props.inputChange} >
+                            onChange={props.inputChange}
+                            disabled={true} >
                             <option value="default">0 pages</option>
                             {Cpp.map((value, index) =>
                                 <option
