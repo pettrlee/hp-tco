@@ -14,12 +14,11 @@ class App extends Component {
 			resultsActive: false,
 			btnDisabled: true,
 			pagewideModel: "default",
-			pagewidePrint: "default",
 			pagewideMoneyback: false,
 			pagewideRecycle: false,
 			competitiveBrand: "default",
 			competitiveModel: "default",
-			competitivePrint: "default",
+			printPerMonth: "default",
 			moneybacKToggle: false,
 			recycleToggle: false
 		};
@@ -50,10 +49,9 @@ class App extends Component {
 			[name]: value
 		}, function () {
 			if (this.state.pagewideModel !== "default" &&
-				this.state.pagewidePrint !== "default" &&
 				this.state.competitiveBrand !== "default" &&
 				this.state.competitiveModel !== "default" &&
-				this.state.competitivePrint !== "default") {
+				this.state.printPerMonth !== "default") {
 				this.handleValidForm();
 			}
 		});
@@ -101,12 +99,11 @@ class App extends Component {
 						inputChange={this.handleInputChange}
 						checkboxChange={this.handleCheckbox}
 						pagewideModel={this.state.pagewideModel}
-						pagewidePrint={this.state.pagewidePrint}
 						pagewideMoneyback={this.statepagewideMoneyback}
 						pagewideRecycle={this.state.pagewideRecycle}
 						competitiveBrand={this.state.competitiveBrand}
 						competitiveModel={this.state.competitiveModel}
-						competitivePrint={this.state.competitivePrint}
+						printPerMonth={this.state.printPerMonth}
 					/>
 				}
 
@@ -115,14 +112,11 @@ class App extends Component {
 						hpData={HP.brands}
 						competitiveData={Competitive.brands}
 						pagewideModel={this.state.pagewideModel}
-						pagewidePrint={this.state.pagewidePrint}
 						pagewideMoneyback={this.state.pagewideMoneyback}
 						pagewideRecycle={this.state.pagewideRecycle}
 						competitiveBrand={this.state.competitiveBrand}
 						competitiveModel={this.state.competitiveModel}
-						competitivePrint={this.state.competitivePrint}
-
-
+						printPerMonth={this.state.printPerMonth}
 						moneybacKToggle={this.state.moneybacKToggle}
 						recycleToggle={this.state.recycleToggle}
 						collapseToggle={this.collapseToggle}

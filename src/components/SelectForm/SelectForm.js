@@ -41,7 +41,7 @@ const SelectForm = (props) => {
                                     <option
                                         key={index}
                                         value={index}>
-                                        {value.model}
+                                        {value.model} ({value.speed}ppm)
                                     </option>
                                 )
                             )}
@@ -51,8 +51,8 @@ const SelectForm = (props) => {
                     <Col sm="2">
                         <Form.Control
                             as="select"
-                            name="pagewidePrint"
-                            value={props.pagewidePrint}
+                            name="printPerMonth"
+                            value={props.printPerMonth}
                             onChange={props.inputChange} >
                             <option value="default" >0 pages</option>
                             {Cpp.map((value, index) =>
@@ -134,7 +134,7 @@ const SelectForm = (props) => {
                                     <option
                                         key={index}
                                         value={index}>
-                                        {value.model}
+                                        {value.model} ({value.speed}ppm)
                                     </option>
                                 )
                             }
@@ -144,8 +144,8 @@ const SelectForm = (props) => {
                     <Col sm="2">
                         <Form.Control
                             as="select"
-                            name="competitivePrint"
-                            value={props.competitivePrint}
+                            name="printPerMonth"
+                            value={props.printPerMonth}
                             onChange={props.inputChange} >
                             <option value="default">0 pages</option>
                             {Cpp.map((value, index) =>

@@ -18,16 +18,18 @@ const Results = (props) => {
 
     const hpModel = props.hpData[0].printers[props.pagewideModel].model;
     const hpModelSpeed = props.hpData[0].printers[props.pagewideModel].speed;
-    const hpModelPages = props.hpData[0].printers[props.pagewideModel].data[props.pagewidePrint].pages;
-    const hpModelTco = Math.trunc(props.hpData[0].printers[props.pagewideModel].data[props.pagewidePrint].tco);
-    const hpModelCpp = props.hpData[0].printers[props.pagewideModel].data[props.pagewidePrint].cpp;
+    const hpModelPages = props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].pages;
+    const hpModelTco = Math.trunc(props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].tco);
+    const hpModelTcoAnnual = hpModelTco / 5;
+    const hpModelCpp = props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].cpp;
 
     const competitiveBrand = props.competitiveData[props.competitiveBrand].brand;
     const competitiveModel = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].model;
     const competitiveModelSpeed = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].speed;
-    const competitiveModelPages = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.competitivePrint].pages;
-    const competitiveModelTco = Math.trunc(props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.competitivePrint].tco);
-    const competitiveModelCpp = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.competitivePrint].cpp;
+    const competitiveModelPages = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].pages;
+    const competitiveModelTco = Math.trunc(props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].tco);
+    const competitiveModelTcoAnnual = competitiveModelTco / 5;
+    const competitiveModelCpp = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].cpp;
 
     const fiveYearSaving = competitiveModelTco - hpModelTco;
     const annualSaving = fiveYearSaving / 5;
@@ -67,13 +69,13 @@ const Results = (props) => {
                         <Row className="flex">
                             <Col sm="6" className="infograph">
                                 <div className="hp">
-                                    <span>{formatter.format(hpModelTco)}</span>
-                                    <div className={"graph" + (hpModelTco > competitiveModelTco ? " high" : " low")}></div>
+                                    <span>{formatter.format(hpModelTcoAnnual)}</span>
+                                    <div className={"graph" + (hpModelTcoAnnual > competitiveModelTcoAnnual ? " high" : " low")}></div>
                                     <p>HP PageWide</p>
                                 </div>
                                 <div className="competitive">
-                                    <span>{formatter.format(competitiveModelTco)}</span>
-                                    <div className={"graph" + (competitiveModelTco > hpModelTco ? " high" : " low")}></div>
+                                    <span>{formatter.format(competitiveModelTcoAnnual)}</span>
+                                    <div className={"graph" + (competitiveModelTcoAnnual > hpModelTcoAnnual ? " high" : " low")}></div>
                                     <p>{competitiveBrand}</p>
                                 </div>
                             </Col>
