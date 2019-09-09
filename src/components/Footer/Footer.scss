@@ -2,9 +2,7 @@
 @import "../../styles/mixin.scss";
 
 footer {
-	@include flexMiddle;
-	background-color: $footer;
-	height: 80px;
+	border-top: 1px solid $gray-border;
 
 	.row {
 		display: flex;
@@ -15,12 +13,14 @@ footer {
 			line-height: 20px;
 			padding: 9px 42px;
 			border-radius: 0 4px 0 4px;
+			margin-top: 20px;
+			margin-bottom: 20px;
 
 			&-prev {
 				@include flexMiddle;
-				color: $white;
-				background-color: $dark-btn;
-				border-color: $dark-btn;
+				color: $dark-btn;
+				background-color: $white;
+				border-color: $white;
 				margin-right: auto;
 				padding: 0;
 				border: none;
@@ -51,9 +51,9 @@ footer {
 			}
 
 			&-pdf {
-				color: $dark-gray;
-				background-color: $light-btn;
-				border-color: $light-btn;
+				color: $light-btn;
+				background-color: $dark-gray;
+				border-color: $dark-gray;
 				margin-left: auto;
 
 				&:focus {

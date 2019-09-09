@@ -21,7 +21,7 @@
 }
 
 #tcoTool {
-	margin-bottom: 150px;
+	margin-bottom: 41px;
 	.competitive {
 		@include form-container;
 		@include form;
@@ -37,6 +37,7 @@
 		}
 	}
 	select.form-control {
+		background-color: $white;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		&::-ms-expand {
