@@ -5,6 +5,7 @@ footer {
 	border-top: 1px solid $gray-border;
 
 	.row {
+		padding: 20px;
 		display: flex;
 
 		.btn {
@@ -13,8 +14,6 @@ footer {
 			line-height: 20px;
 			padding: 9px 42px;
 			border-radius: 0 4px 0 4px;
-			margin-top: 20px;
-			margin-bottom: 20px;
 
 			&-prev {
 				@include flexMiddle;
