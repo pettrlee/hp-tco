@@ -13,19 +13,20 @@ header {
 			font-size: 28px;
 			line-height: 32px;
 			padding: 0;
-			margin: 25px;
+			margin: 34px 25px;
 			color: $white;
 		}
 	}
 
 	.nav-item {
 		@include flexCenter;
-		min-height: 100px;
 		text-align: center;
 		@include hpe-bold;
 		font-size: 20px;
 		line-height: 23px;
 		color: $white;
+		padding-top: 20px;
+		padding-bottom: 20px;
 
 		img {
 			margin-right: 18px;

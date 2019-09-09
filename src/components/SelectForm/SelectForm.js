@@ -29,7 +29,7 @@ const SelectForm = (props) => {
                 </Row>
                 <Form.Group as={Row}>
                     <Form.Label>Model</Form.Label>
-                    <Col sm="6">
+                    <Col md={6}>
                         <Form.Control
                             as="select"
                             name="pagewideModel"
@@ -48,7 +48,7 @@ const SelectForm = (props) => {
                         </Form.Control>
                     </Col>
                     <Form.Label>Print per <br />month</Form.Label>
-                    <Col sm="2">
+                    <Col md={2}>
                         <Form.Control
                             as="select"
                             name="printPerMonth"
@@ -105,7 +105,7 @@ const SelectForm = (props) => {
                 </Row>
                 <Form.Group as={Row}>
                     <Form.Label>Brand</Form.Label>
-                    <Col sm="2">
+                    <Col md={2}>
                         <Form.Control
                             as="select"
                             name="competitiveBrand"
@@ -122,7 +122,7 @@ const SelectForm = (props) => {
                         </Form.Control>
                     </Col>
                     <Form.Label>Model</Form.Label>
-                    <Col sm="3">
+                    <Col md={4}>
                         <Form.Control
                             as="select"
                             name="competitiveModel"
@@ -141,7 +141,7 @@ const SelectForm = (props) => {
                         </Form.Control>
                     </Col>
                     <Form.Label>Print per <br />month</Form.Label>
-                    <Col sm="2">
+                    <Col md={2}>
                         <Form.Control
                             as="select"
                             name="printPerMonth"

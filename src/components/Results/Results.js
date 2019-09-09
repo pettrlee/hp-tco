@@ -65,9 +65,9 @@ const Results = (props) => {
                     <h2>Annual Printing Cost</h2>
                 </Row>
                 <Row>
-                    <Col sm="6">
+                    <Col md={6}>
                         <Row className="flex">
-                            <Col sm="6" className="infograph">
+                            <Col lg={6} className="infograph">
                                 <div className="hp">
                                     <span>{formatter.format(hpModelTcoAnnual)}</span>
                                     <div className={"graph" + (hpModelTcoAnnual > competitiveModelTcoAnnual ? " high" : " low")}></div>
@@ -79,7 +79,7 @@ const Results = (props) => {
                                     <p>{competitiveBrand}</p>
                                 </div>
                             </Col>
-                            <Col sm="6" className="info">
+                            <Col lg={6} className="info">
                                 <div className="content">
                                     <p>{formatter.format(annualSaving)}</p>
                                     <span>Annual Estimated Savings</span>
@@ -91,20 +91,20 @@ const Results = (props) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm="6">
+                    <Col md={6}>
                         <Row className="estimate">
-                            <Col sm="12" className="head">
+                            <Col sm={12} className="head">
                                 <h3>Estimate Printing Cost Over 5 Years</h3>
                             </Col>
-                            <Col sm="12" className="product">
+                            <Col sm={12} className="product">
                                 <p>HP {hpModel} ({hpModelSpeed}ppm)</p>
                                 <span>{formatter.format(hpModelTco)}</span>
                             </Col>
-                            <Col sm="12" className="product">
+                            <Col sm={12} className="product">
                                 <p>{competitiveBrand} {competitiveModel} ({competitiveModelSpeed}ppm)</p>
                                 <span>{formatter.format(competitiveModelTco)}</span>
                             </Col>
-                            <Col sm="12" className="saving">
+                            <Col sm={12} className="saving">
                                 <p>Estimated Savings with HP Pagewide</p>
                                 <span>{formatter.format(fiveYearSaving)}</span>
                             </Col>
@@ -113,12 +113,16 @@ const Results = (props) => {
                 </Row>
             </Container>
 
+            <Container className="compare-title">
+                <Row>
+                    <Col>
+                        <h2>Comparision</h2>
+                    </Col>
+                </Row>
+            </Container>
             <Container className="compare">
                 <Row>
-                    <h2>Comparision</h2>
-                </Row>
-                <Row>
-                    <Table bordered responsive="sm">
+                    <Table bordered responsive="lg">
                         <thead>
                             <tr>
                                 <th></th>

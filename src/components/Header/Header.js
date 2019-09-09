@@ -11,10 +11,10 @@ const Header = (props) => {
         <header>
             <Container>
                 <Row>
-                    <Col xs={12} sm={6} className="brand">
+                    <Col xs={12} md={6} className="brand">
                         <h1>A3 PageWide TCO Tool</h1>
                     </Col>
-                    <Col xs={6} sm={3} className={"nav-item" + (props.selectActive ? ' active' : '')}>
+                    <Col xs={6} sm={6} md={3} className={"nav-item" + (props.selectActive ? ' active' : '')}>
                         <img
                             width={40}
                             height={32}
@@ -22,7 +22,7 @@ const Header = (props) => {
                             alt="Select Device" />
                         Select Device
                     </Col>
-                    <Col xs={6} sm={3} className={"nav-item" + (props.resultsActive ? ' active' : '')}>
+                    <Col xs={6} sm={6} md={3} className={"nav-item" + (props.resultsActive ? ' active' : '')}>
                         <img
                             width={40}
                             height={37}

@@ -101,7 +101,8 @@
 			@include flexCenter;
 			flex-direction: column;
 			height: 110px;
-			width: 230px;
+			width: 100%;
+			max-width: 230px;
 			background-color: $dark-blue;
 			margin: 0 0 16px;
 
@@ -125,6 +126,7 @@
 	.estimate {
 		max-width: 570px;
 		border: 1px solid $gray-border;
+		margin: 0 auto;
 
 		.head {
 			background-color: $dark-blue;
@@ -186,13 +188,25 @@
 	}
 }
 
+@media (max-width: 576px) {
+	.apc {
+		padding: 40px 15px;
+	}
+}
+
 .compare {
-	h2 {
-		color: $dark;
-		@include hpe-bold;
-		font-size: 36px;
-		line-height: 36px;
-		margin: 40px 0 20px;
+	&-title {
+		&.container {
+			max-width: 1267px;
+		}
+
+		h2 {
+			color: $dark;
+			@include hpe-bold;
+			font-size: 36px;
+			line-height: 36px;
+			margin: 40px 0 20px;
+		}
 	}
 
 	.table {
@@ -414,9 +428,13 @@
 
 .discalimer {
 	margin-bottom: 41px;
+	&.container {
+		max-width: 1267px;
+	}
 
 	.copy {
-		padding-left: 0;
+		// padding-left: 0;
+
 		p {
 			color: $discalimer;
 			@include hpe-regular;
