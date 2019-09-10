@@ -71,19 +71,19 @@ export default class Results extends PureComponent {
         })
 
         const Logo = (props) => {
-            if (this.state.competitiveBrand === "Canon") {
+            if (competitiveBrand === "Canon") {
                 return <img width={300} height={200} src={Canon} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "Xerox") {
+            } else if (competitiveBrand === "Xerox") {
                 return <img width={300} height={200} src={Xerox} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "Ricoh") {
+            } else if (competitiveBrand === "Ricoh") {
                 return <img width={300} height={200} src={Ricoh} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "Konica Minolta") {
+            } else if (competitiveBrand === "Konica Minolta") {
                 return <img width={300} height={200} src={Konica} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "") {
+            } else if (competitiveBrand === "Toshiba") {
                 return <img width={300} height={200} src={Toshiba} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "Sharp") {
+            } else if (competitiveBrand === "Sharp") {
                 return <img width={300} height={200} src={Sharp} alt={props.alt} />;
-            } else if (this.state.competitiveBrand === "Kyocera") {
+            } else if (competitiveBrand === "Kyocera") {
                 return <img width={300} height={200} src={Kyocera} alt={props.alt} />;
             }
         }

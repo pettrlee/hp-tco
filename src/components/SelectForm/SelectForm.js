@@ -30,6 +30,11 @@ export default class SelectForm extends PureComponent {
         });
     }
 
+    // scrolltotop on unmount
+    componentWillUnmount() {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         const props = this.props
         return (
