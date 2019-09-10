@@ -10,15 +10,15 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectActive: false,
-			resultsActive: true,
+			selectActive: true,
+			resultsActive: false,
 			btnDisabled: true,
-			pagewideModel: "1",
+			pagewideModel: "default",
 			pagewideMoneyback: false,
 			pagewideRecycle: false,
-			competitiveBrand: "1",
-			competitiveModel: "1",
-			printPerMonth: "1",
+			competitiveBrand: "default",
+			competitiveModel: "default",
+			printPerMonth: "default",
 			moneybacKToggle: false,
 			recycleToggle: false
 		};

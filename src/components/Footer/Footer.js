@@ -7,41 +7,44 @@ import Back from './back.png';
 
 const Footer = (props) => {
     return (
-        <Container as="footer">
-            {props.selectActive &&
-                <Row>
-                    <Button
-                        variant="next"
-                        size="lg"
-                        disabled={props.FormCheck}
-                        onClick={props.ToggleView} >
-                        Next
+        <footer>
+            <div className="brdr"></div>
+            <Container>
+                {props.selectActive &&
+                    <Row>
+                        <Button
+                            variant="next"
+                            size="lg"
+                            disabled={props.FormCheck}
+                            onClick={props.ToggleView} >
+                            Next
                     </Button>
-                </Row>
-            }
+                    </Row>
+                }
 
-            {props.resultsActive &&
-                <Row>
-                    <Button
-                        variant="prev"
-                        size="lg"
-                        onClick={props.ToggleView} >
-                        <img
-                            width={8}
-                            height={14}
-                            src={Back}
-                            alt="Previous" />
-                        Previous
+                {props.resultsActive &&
+                    <Row>
+                        <Button
+                            variant="prev"
+                            size="lg"
+                            onClick={props.ToggleView} >
+                            <img
+                                width={8}
+                                height={14}
+                                src={Back}
+                                alt="Previous" />
+                            Previous
                     </Button>
-                    <Button
-                        variant="pdf"
-                        size="lg">
-                        Get Your PDF
+                        <Button
+                            variant="pdf"
+                            size="lg">
+                            Get Your PDF
                     </Button>
-                </Row>
-            }
+                    </Row>
+                }
 
-        </Container>
+            </Container>
+        </footer>
     );
 }
 
