@@ -4,8 +4,12 @@
 footer {
 	border-top: 1px solid $gray-border;
 
+	&.container {
+		max-width: 1267px;
+	}
+
 	.row {
-		padding: 20px 20px 100px;
+		padding: 20px 15px 100px;
 		display: flex;
 
 		.btn {
