@@ -80,7 +80,6 @@ export default class SelectForm extends PureComponent {
                                 name="printPerMonth"
                                 value={props.printPerMonth}
                                 onChange={props.inputChange} >
-                                <option value="default" >0 pages</option>
                                 {this.state.Cpp.map((value, index) =>
                                     <option
                                         key={index}
@@ -174,7 +173,6 @@ export default class SelectForm extends PureComponent {
                                 value={props.printPerMonth}
                                 onChange={props.inputChange}
                                 disabled={true} >
-                                <option value="default">0 pages</option>
                                 {this.state.Cpp.map((value, index) =>
                                     <option
                                         key={index}

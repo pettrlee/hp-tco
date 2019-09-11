@@ -18,13 +18,14 @@ class App extends Component {
 			pagewideRecycle: false,
 			competitiveBrand: "default",
 			competitiveModel: "default",
-			printPerMonth: "default",
+			printPerMonth: 0,
 			moneybacKToggle: false,
 			recycleToggle: false
 		};
 
 		this.handleCheckbox = this.handleCheckbox.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.ToggleView = this.ToggleView.bind(this);
 		this.collapseToggle = this.collapseToggle.bind(this);
 	}
 
@@ -50,16 +51,17 @@ class App extends Component {
 		}, function () {
 			if (this.state.pagewideModel !== "default" &&
 				this.state.competitiveBrand !== "default" &&
-				this.state.competitiveModel !== "default" &&
-				this.state.printPerMonth !== "default") {
-				this.handleValidForm();
+				this.state.competitiveModel !== "default") {
+				this.handleValidForm(false);
+			} else {
+				this.handleValidForm(true);
 			}
 		});
 	}
 
-	handleValidForm = () => {
+	handleValidForm = (bool) => {
 		this.setState({
-			btnDisabled: false
+			btnDisabled: bool
 		})
 	}
 

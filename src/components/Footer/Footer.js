@@ -37,9 +37,9 @@ const Footer = (props) => {
                     </Button>
                         <Button
                             variant="pdf"
-                            size="lg">
+                            size="lg" >
                             Get Your PDF
-                    </Button>
+                        </Button>
                     </Row>
                 }
 
