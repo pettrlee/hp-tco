@@ -39,7 +39,7 @@ export default class Results extends PureComponent {
 
     handleCollapse = (e) => {
         const name = e.target.name;
-        const value = this.state[name] ? false : true;
+        const value = e.target.value;
 
         if (!this.state[name]) {
             window.dataLayer.push({
@@ -50,7 +50,7 @@ export default class Results extends PureComponent {
         }
 
         this.setState({
-            [name]: value
+            [name]: !this.state[name]
         })
     }
 
@@ -298,91 +298,84 @@ export default class Results extends PureComponent {
                             </Col>
                             <Col>
                                 {props.pagewideMoneyback &&
-                                    <div>
-                                        <div className="program" >
-                                            <div className="cta">
-                                                <Star />
-                                                <p>120-Day “Love it or your Money Back”</p>
-                                                <Button
-                                                    variant="trigger"
-                                                    name="moneybacKToggle"
-                                                    value="120-Day “Love it or your Money Back”"
-                                                    aria-controls="moneybacKToggle"
-                                                    aria-expanded={this.state.moneybacKToggle}
-                                                    onClick={this.handleCollapse} >
-                                                    <span></span><span></span>
-                                                </Button>
-                                            </div>
-                                            <Collapse className="content" in={this.state.moneybacKToggle}>
-                                                <div id="moneybacKToggle">
-                                                    <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                                    <h5>How it works</h5>
-                                                    <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                                    <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                                    <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                    <Button
-                                                        variant="detail"
-                                                        value="120-Day “Love it or your Money Back”"
-                                                        onClick={this.handleClick} >
-                                                        FULL DETAILS
-                                                    </Button>
-                                                </div>
-                                            </Collapse>
-                                        </div>
+                                    <div className="program" >
                                         <Button
-                                            variant="program"
+                                            variant="trigger"
+                                            className="mobile"
                                             value="120-Day “Love it or your Money Back”"
                                             onClick={this.handleClick} >
-                                            <div
-                                                className="cta">
-                                                <Star />
-                                                <p>120-Day “Love it or your Money Back”</p>
+                                            <Star />
+                                            <p>120-Day “Love it or your Money Back”</p>
+                                        </Button>
+                                        <Button
+                                            variant="trigger"
+                                            name="moneybacKToggle"
+                                            value="120-Day “Love it or your Money Back”"
+                                            aria-controls="moneybacKToggle"
+                                            aria-expanded={this.state.moneybacKToggle}
+                                            onClick={this.handleCollapse} >
+                                            <Star />
+                                            <p>120-Day “Love it or your Money Back”</p>
+                                            <div className="icon">
+                                                <span></span><span></span>
                                             </div>
                                         </Button>
+                                        <Collapse className="content" in={this.state.moneybacKToggle}>
+                                            <div id="moneybacKToggle">
+                                                <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
+                                                <h5>How it works</h5>
+                                                <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
+                                                <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
+                                                <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                                <Button
+                                                    variant="detail"
+                                                    value="120-Day “Love it or your Money Back”"
+                                                    onClick={this.handleClick} >
+                                                    FULL DETAILS
+                                                    </Button>
+                                            </div>
+                                        </Collapse>
                                     </div>
                                 }
+
                                 {props.pagewideRecycle &&
-                                    <div>
-                                        <div className="program" >
-                                            <div className="cta">
-                                                <Printer />
-                                                <p>Recycle my old printer/copier</p>
-                                                <Button
-                                                    variant="trigger"
-                                                    name="recycleToggle"
-                                                    value="120-Day “Love it or your Money Back”"
-                                                    aria-controls="recycleToggle"
-                                                    aria-expanded={this.state.recycleToggle}
-                                                    onClick={this.handleCollapse} >
-                                                    <span></span><span></span>
-                                                </Button>
-                                            </div>
-                                            <Collapse className="content" in={this.state.recycleToggle}>
-                                                <div id="recycleToggle">
-                                                    <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                                    <h5>How it works</h5>
-                                                    <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                                    <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                                    <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                    <Button
-                                                        variant="detail"
-                                                        value="Recycle my old printer/copier"
-                                                        onClick={this.handleClick} >
-                                                        FULL DETAILS
-                                                    </Button>
-                                                </div>
-                                            </Collapse>
-                                        </div>
+                                    <div className="program" >
                                         <Button
-                                            variant="program"
+                                            variant="trigger"
+                                            className="mobile"
                                             value="Recycle my old printer/copier"
                                             onClick={this.handleClick} >
-                                            <div
-                                                className="detail">
-                                                <Printer />
-                                                <p>Recycle my old printer/copier</p>
+                                            <Printer />
+                                            <p>Recycle my old printer/copier</p>
+                                        </Button>
+                                        <Button
+                                            variant="trigger"
+                                            name="recycleToggle"
+                                            value="Recycle my old printer/copier"
+                                            aria-controls="recycleToggle"
+                                            aria-expanded={this.state.recycleToggle}
+                                            onClick={this.handleCollapse} >
+                                            <Printer />
+                                            <p>Recycle my old printer/copier</p>
+                                            <div className="icon">
+                                                <span></span><span></span>
                                             </div>
                                         </Button>
+                                        <Collapse className="content" in={this.state.recycleToggle}>
+                                            <div id="recycleToggle">
+                                                <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
+                                                <h5>How it works</h5>
+                                                <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
+                                                <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
+                                                <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                                <Button
+                                                    variant="detail"
+                                                    value="Recycle my old printer/copier"
+                                                    onClick={this.handleClick} >
+                                                    FULL DETAILS
+                                                    </Button>
+                                            </div>
+                                        </Collapse>
                                     </div>
                                 }
                             </Col>

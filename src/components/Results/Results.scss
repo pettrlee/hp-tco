@@ -309,12 +309,7 @@
 				}
 			}
 
-			.btn-program {
-				display: none;
-			}
-
-			.program,
-			.btn-program {
+			.program {
 				box-sizing: border-box;
 				border: 1px solid $table-border;
 				border-radius: 1px;
@@ -323,12 +318,17 @@
 				margin: 0 auto 10px auto;
 				width: 100%;
 				max-width: 450px;
-				padding: 15px;
 
-				.cta {
+				.btn-trigger {
 					min-height: 72px;
+					width: 100%;
 					display: flex;
 					align-items: center;
+					padding: 15px;
+
+					&.mobile {
+						display: none;
+					}
 
 					svg {
 						margin: 17px 20px 17px 2px;
@@ -342,7 +342,7 @@
 						margin: 0;
 					}
 
-					.btn-trigger {
+					.icon {
 						@include flexCenter;
 						flex-direction: column;
 						margin-left: auto;
@@ -372,8 +372,10 @@
 								transform: rotate(90deg);
 							}
 						}
+					}
 
-						&[aria-expanded="true"] {
+					&[aria-expanded="true"] {
+						.icon {
 							transform: rotate(0);
 
 							span {
@@ -387,7 +389,7 @@
 				}
 
 				.content {
-					padding: 20px 20px 20px 5px;
+					padding: 20px 20px 20px 20px;
 
 					p {
 						color: $dark;
@@ -457,111 +459,101 @@
 	}
 }
 
+
 @media (max-width: 576px) {
-	.compare {
-		.row {
-			.col {
-				padding: 10px;
+    .compare {
+        .row {
+            .col {
+                padding: 10px;
 
-				&:not(:only-child):first-child {
-					max-width: 100px;
-				}
-			}
-		}
-		&-head {
-			.col {
-				&:first-child {
-					display: none;
-				}
+                &:not(:only-child):first-child {
+                    max-width: 100px;
+                }
+            }
+        }
+        &-head {
+            .col {
+                &:first-child {
+                    display: none;
+                }
 
-				h3 {
-					font-size: 20px;
-					line-height: 20px;
+                h3 {
+                    font-size: 20px;
+                    line-height: 20px;
 
-					small {
-						display: block;
-						font-size: 16px;
-						line-height: 19px;
-					}
-				}
-			}
-		}
+                    small {
+                        display: block;
+                        font-size: 16px;
+                        line-height: 19px;
+                    }
+                }
+            }
+        }
 
-		&-body {
-			.col {
-				&:only-child {
-					h4 {
-						font-size: 16px;
-						line-height: 20px;
+        &-body {
+            .col {
+                &:only-child {
+                    h4 {
+                        font-size: 16px;
+                        line-height: 20px;
 
-						small {
-							font-size: 14px;
-							line-height: 16px;
-						}
-					}
-				}
+                        small {
+                            font-size: 14px;
+                            line-height: 16px;
+                        }
+                    }
+                }
 
-				p {
-					font-size: 16px;
-					line-height: 18px;
+                p {
+                    font-size: 16px;
+                    line-height: 18px;
 
-					&.none {
-						font-size: 16px;
-						line-height: 28px;
-					}
-				}
-			}
-		}
-	}
+                    &.none {
+                        font-size: 16px;
+                        line-height: 28px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
-	.compare {
+	.compare-body .col {
+		.program {
+			.btn-trigger {
+				display: none;
 
-		&-body {
-
-			.col {
-
-				.program {
-					display: none;
-				}
-
-				.btn-program {
-					display: block;
+				&.mobile {
+					display: flex;
+					flex-direction: column;
 					padding: 10px;
 
-					.cta {
-						flex-direction: column;
-
-						svg {
-							margin: 0 auto 10px;
-						}
-
-						p {
-							font-size: 16px;
-							line-height: 17px;
-						}
-					}
-				}
-
-				.info {
-					span {
-						font-size: 16px;
-						line-height: 17px;
+					svg {
+						margin: 0 auto 10px;
 					}
 
 					p {
-						font-size: 18px;
-						line-height: 21px;
-						margin: 0;
+						font-size: 16px;
+						line-height: 17px;
 					}
 				}
 			}
 		}
-	}
-}
 
-@media (min-width: 768px) {
+		.info {
+			span {
+				font-size: 16px;
+				line-height: 17px;
+			}
+
+			p {
+				font-size: 18px;
+				line-height: 21px;
+				margin: 0;
+			}
+		}
+	}
 }
 
 .discalimer {

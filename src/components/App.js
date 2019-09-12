@@ -24,11 +24,10 @@ class App extends Component {
 	}
 
 	handleCheckbox = (e) => {
-		const value = e.target.checked ? true : false;
 		const name = e.target.name;
 
 		this.setState({
-			[name]: value
+			[name]: !this.state[name]
 		})
 	}
 
@@ -56,8 +55,8 @@ class App extends Component {
 	}
 
 	ToggleView = (e) => {
-		const results = this.state.showResults ? false : true;
-		const linkplacement = this.state.showResults ? "Results" : "Select Device";
+		const results = this.state.showResults;
+		const linkplacement = results ? "Results" : "Select Device";
 		const linkID = e.target.name;
 
 		window.dataLayer.push({
@@ -68,7 +67,7 @@ class App extends Component {
 
 		this.setState({
 			...this.state,
-			showResults: results
+			showResults: !results
 		})
 	}
 
