@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 import Header from './Header/Header';
 import HP from './data/hp.json';
 import Competitive from './data/Competitive.json';
@@ -85,6 +88,36 @@ class App extends Component {
 		})
 	}
 
+	GetPDF = (e) => {
+		if (!this.state.btnDisabled) {
+			const hpModel = HP.brands[0].printers[this.state.pagewideModel].model;
+			const hpModelSpeed = HP.brands[0].printers[this.state.pagewideModel].speed;
+			const hpModelPages = HP.brands[0].printers[this.state.pagewideModel].data[this.state.printPerMonth].pages;
+
+			const competitiveBrand = Competitive.brands[this.state.competitiveBrand].brand;
+			const competitiveModel = Competitive.brands[this.state.competitiveBrand].printers[this.state.competitiveModel].model;
+			const competitiveModelSpeed = Competitive.brands[this.state.competitiveBrand].printers[this.state.competitiveModel].speed;
+			const competitiveModelPages = Competitive.brands[this.state.competitiveBrand].printers[this.state.competitiveModel].data[this.state.printPerMonth].pages;
+
+			let filename = `HP-${hpModel}(${hpModelSpeed}ppm)-${hpModelPages}-pages__${competitiveBrand}-${competitiveModel}(${competitiveModelSpeed}ppm)-${competitiveModelPages}-pages.pdf`;
+
+			html2canvas(document.querySelector('#results'), {
+				logging: true,
+				allowTaint: false,
+				backgroundColor: "#ffffff",
+				scale: 1,
+				x: 0,
+				y: 0,
+				scrollX: 0,
+				scrollY: 0
+			}).then(function (canvas) {
+				let pdf = new jsPDF('', 'mm', [canvas.width, canvas.height]);
+				pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0);
+				pdf.save(filename);
+			});
+		}
+	}
+
 	render() {
 
 		return (
@@ -130,6 +163,7 @@ class App extends Component {
 					resultsActive={this.state.resultsActive}
 					FormCheck={this.state.btnDisabled}
 					ToggleView={this.ToggleView}
+					GetPDF={this.GetPDF}
 				/>
 			</div>
 		);

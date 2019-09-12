@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Container, Row, Col, Table, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import './Results.scss'
 
 // image
@@ -72,24 +72,24 @@ export default class Results extends PureComponent {
 
         const Logo = (props) => {
             if (competitiveBrand === "Canon") {
-                return <img width={300} height={200} src={Canon} alt={props.alt} />;
+                return Canon;
             } else if (competitiveBrand === "Xerox") {
-                return <img width={300} height={200} src={Xerox} alt={props.alt} />;
+                return Xerox;
             } else if (competitiveBrand === "Ricoh") {
-                return <img width={300} height={200} src={Ricoh} alt={props.alt} />;
+                return Ricoh;
             } else if (competitiveBrand === "Konica Minolta") {
-                return <img width={300} height={200} src={Konica} alt={props.alt} />;
+                return Konica;
             } else if (competitiveBrand === "Toshiba") {
-                return <img width={300} height={200} src={Toshiba} alt={props.alt} />;
+                return Toshiba;
             } else if (competitiveBrand === "Sharp") {
-                return <img width={300} height={200} src={Sharp} alt={props.alt} />;
+                return Sharp;
             } else if (competitiveBrand === "Kyocera") {
-                return <img width={300} height={200} src={Kyocera} alt={props.alt} />;
+                return Kyocera;
             }
         }
 
         return (
-            <div>
+            <div id="results">
                 <Container className="apc">
                     <Row>
                         <h2>Annual Printing Cost</h2>
@@ -150,125 +150,160 @@ export default class Results extends PureComponent {
                         </Col>
                     </Row>
                 </Container>
-                <Container className="compare">
-                    <Row>
-                        <Table bordered responsive="lg">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th align="center">
-                                        <img
-                                            width={217}
-                                            height={266}
-                                            src={pagewideImage}
-                                            alt={"HP " + hpModel + " (" + hpModelSpeed + "ppm)"} />
-                                        <h3>HP {hpModel} <small>({hpModelSpeed}ppm)</small></h3>
-                                    </th>
-                                    <th>
-                                        <Logo
-                                            alt={competitiveBrand + " " + competitiveModel + " (" + competitiveModelSpeed + "ppm)"}
-                                        />
-                                        <h3>{competitiveBrand} {competitiveModel} <small>({competitiveModelSpeed}ppm)</small></h3>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colSpan="3"><h4>Specification <small>(based model)</small></h4></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Print Speed</p></td>
-                                    <td><p>{hpModelSpeed} ppm</p></td>
-                                    <td><p>{competitiveModelSpeed} ppm</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Prints per month<sup>1</sup></p></td>
-                                    <td><p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(hpModelPages)} pages</p></td>
-                                    <td><p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(competitiveModelPages)} pages</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Cost per Page<sup>2</sup></p></td>
-                                    <td><p>${hpModelCpp}</p></td>
-                                    <td><p>${competitiveModelCpp}</p></td>
-                                </tr>
-                                <tr>
-                                    <td colSpan="3"><h4>Complimentary Features</h4></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Program</p></td>
-                                    <td>
-                                        {props.pagewideMoneyback &&
-                                            <div className="program">
-                                                <div className="cta">
-                                                    <Star />
-                                                    <p>120-Day “Love it or your Money Back”</p>
-                                                    <Button
-                                                        variant="trigger"
-                                                        className={props.moneybacKToggle ? "collapsed" : ""}
-                                                        name="moneybacKToggle"
-                                                        value={props.moneybacKToggle}
-                                                        onClick={props.collapseToggle}>
-                                                        <span></span><span></span>
-                                                    </Button>
-                                                </div>
-                                                <div className={"content" + (props.moneybacKToggle ? " collapsed" : "")}>
-                                                    <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                                    <h5>How it works</h5>
-                                                    <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                                    <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                                    <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                    <Button
-                                                        variant="detail">
-                                                        FULL DETAILS
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                        }
 
-                                        {props.pagewideRecycle &&
-                                            <div className="program">
-                                                <div className="cta">
-                                                    <Printer />
-                                                    <p>Recycle my old printer/copier</p>
-                                                    <Button
-                                                        variant="trigger"
-                                                        className={props.recycleToggle ? "collapsed" : ""}
-                                                        name="recycleToggle"
-                                                        value={props.recycleToggle}
-                                                        onClick={props.collapseToggle} >
-                                                        <span></span><span></span>
-                                                    </Button>
-                                                </div>
-                                                <div className={"content" + (props.recycleToggle ? " collapsed" : "")}>
-                                                    <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                                    <h5>How it works</h5>
-                                                    <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                                    <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                                    <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                    <Button
-                                                        variant="detail">
-                                                        FULL DETAILS
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                        }
-                                    </td>
-                                    <td><p className="none">None</p></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div className="info">
-                                            <span>Saving</span>
-                                            <p>{formatter.format(fiveYearSaving)}</p>
+                <Container className="compare">
+                    <Row className="compare-head">
+                        <Col />
+                        <Col>
+                            <Image
+                                fluid
+                                width={217}
+                                height={266}
+                                src={pagewideImage}
+                                alt={`HP ${hpModel} (${hpModelSpeed}ppm)`} />
+                            <h3>HP {hpModel} <small>({hpModelSpeed}ppm)</small></h3>
+                        </Col>
+                        <Col>
+                            <Image
+                                fluid
+                                width={300}
+                                height={200}
+                                src={Logo()}
+                                alt={`${competitiveBrand} ${competitiveModel} (${competitiveModelSpeed}ppm)`} />
+                            <h3>{competitiveBrand} {competitiveModel} <small>({competitiveModelSpeed}ppm)</small></h3>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body">
+                        <Col>
+                            <h4>Specification <small>(based model)</small></h4>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body">
+                        <Col>
+                            <p>Print Speed</p>
+                        </Col>
+                        <Col>
+                            <p>{hpModelSpeed} ppm</p>
+                        </Col>
+                        <Col>
+                            <p>{competitiveModelSpeed} ppm</p>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body">
+                        <Col>
+                            <p>Prints per month<sup>1</sup></p>
+                        </Col>
+                        <Col>
+                            <p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(hpModelPages)} pages</p>
+                        </Col>
+                        <Col>
+                            <p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(competitiveModelPages)} pages</p>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body">
+                        <Col>
+                            <p>Cost per Page<sup>2</sup></p>
+                        </Col>
+                        <Col>
+                            <p>${hpModelCpp}</p>
+                        </Col>
+                        <Col>
+                            <p>${competitiveModelCpp}</p>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body" data-html2canvas-ignore>
+                        <Col>
+                            <h4>Complimentary Features</h4>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body" data-html2canvas-ignore>
+                        <Col>
+                            <p>Program</p>
+                        </Col>
+                        <Col>
+                            {props.pagewideMoneyback &&
+                                <div>
+                                    <div className="program" >
+                                        <div className="cta">
+                                            <Star />
+                                            <p>120-Day “Love it or your Money Back”</p>
+                                            <Button
+                                                variant="trigger"
+                                                className={props.moneybacKToggle ? "collapsed" : ""}
+                                                name="moneybacKToggle"
+                                                value={props.moneybacKToggle}
+                                                onClick={props.collapseToggle}>
+                                                <span></span><span></span>
+                                            </Button>
                                         </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </Table>
+                                        <div className={"content" + (props.moneybacKToggle ? " collapsed" : "")}>
+                                            <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
+                                            <h5>How it works</h5>
+                                            <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
+                                            <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
+                                            <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                            <Button
+                                                variant="detail">
+                                                FULL DETAILS
+                                        </Button>
+                                        </div>
+                                    </div>
+
+                                    <Button
+                                        variant="program">
+                                        <div
+                                            className="cta" >
+                                            <Star />
+                                            <p>120-Day “Love it or your Money Back”</p>
+                                        </div>
+                                    </Button>
+                                </div>
+                            }
+
+                            {props.pagewideRecycle &&
+                                <div className="program">
+                                    <div className="cta">
+                                        <Printer />
+                                        <p>Recycle my old printer/copier</p>
+                                        <Button
+                                            variant="trigger"
+                                            className={props.recycleToggle ? "collapsed" : ""}
+                                            name="recycleToggle"
+                                            value={props.recycleToggle}
+                                            onClick={props.collapseToggle} >
+                                            <span></span><span></span>
+                                        </Button>
+                                    </div>
+                                    <div className={"content" + (props.recycleToggle ? " collapsed" : "")}>
+                                        <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
+                                        <h5>How it works</h5>
+                                        <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
+                                        <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
+                                        <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                        <Button
+                                            variant="detail">
+                                            FULL DETAILS
+                                        </Button>
+                                    </div>
+                                </div>
+                            }
+                        </Col>
+                        <Col>
+                            <p className="none">None</p>
+                        </Col>
+                    </Row>
+                    <Row className="compare-body">
+                        <Col />
+                        <Col>
+                            <div className="info">
+                                <span>Saving</span>
+                                <p>{formatter.format(fiveYearSaving)}</p>
+                            </div>
+                        </Col>
+                        <Col />
                     </Row>
                 </Container>
+
                 <Container className="discalimer">
                     <Row>
                         <Col sm={10} className="copy">

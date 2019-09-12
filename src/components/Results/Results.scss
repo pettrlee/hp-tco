@@ -14,7 +14,9 @@
 	}
 
 	.graph {
-		border-bottom: 2px solid $graph-border;
+		border-style: solid;
+		border-width: 0 0 2px 0;
+		border-color: $gray-border;
 		padding-right: 30px;
 
 		&::before {
@@ -130,7 +132,9 @@
 
 		.head {
 			background-color: $dark-blue;
-			border-bottom: 1px solid $gray-border;
+			border-style: solid;
+			border-width: 0 0 1px 0;
+			border-color: $gray-border;
 
 			h3 {
 				color: $white;
@@ -143,13 +147,17 @@
 
 		.product {
 			background-color: $white;
-			border-bottom: 1px solid $gray-border;
+			border-style: solid;
+			border-width: 0 0 1px 0;
+			border-color: $gray-border;
 			@include flexMiddle;
 
 			p {
 				@include hpe-regular;
 				@include tableCopy;
-				border-right: 1px solid $gray-border;
+				border-style: solid;
+				border-width: 0 1px 0 0;
+				border-color: $gray-border;
 				padding: 18px 5px;
 				margin: 0;
 				flex: 1;
@@ -171,7 +179,9 @@
 			p {
 				@include hpe-bold;
 				@include tableCopy;
-				border-right: 1px solid $gray-border;
+				border-style: solid;
+				border-width: 0 1px 0 0;
+				border-color: $gray-border;
 				padding: 18px 5px;
 				margin: 0;
 				flex: 1;
@@ -195,6 +205,37 @@
 }
 
 .compare {
+	margin-bottom: 20px;
+	border: 1px solid $table-border;
+
+	.row {
+		&:not(:last-child) {
+			border-style: solid;
+			border-width: 0 0 1px 0;
+			border-color: $table-border;
+		}
+
+		.col {
+			display: flex;
+			flex-direction: column;
+			padding: 15px;
+
+			&:not(:only-child):first-child {
+				max-width: 250px;
+			}
+
+			&:not(:first-child) {
+				max-width: 495px;
+			}
+
+			&:not(:last-child) {
+				border-style: solid;
+				border-width: 0 1px 0 0;
+				border-color: $table-border;
+			}
+		}
+	}
+
 	&-title {
 		&.container {
 			max-width: 1267px;
@@ -209,221 +250,323 @@
 		}
 	}
 
-	.table {
-		margin-bottom: 20px;
+	&-head {
+		.col {
+			justify-content: flex-end;
+			align-items: center;
+			text-align: center;
 
-		&-bordered {
-			border: 1px solid $table-border;
+			h3 {
+				color: $dark;
+				@include hpe-bold;
+				font-size: 22px;
+				line-height: 22px;
+
+				small {
+					opacity: 0.7;
+					@include hpe-regular;
+					font-size: 18px;
+					line-height: 21px;
+				}
+			}
 		}
+	}
 
-		thead {
-			th {
-				text-align: center;
-				h3 {
-					color: $dark;
+	&-body {
+		.col {
+			&:only-child {
+				background-color: $lighter-gray;
+
+				h4 {
+					color: $dark-gray;
 					@include hpe-bold;
-					font-size: 22px;
-					line-height: 22px;
+					font-size: 18px;
+					line-height: 21px;
+					margin: 0 0 0 15px;
 
 					small {
 						opacity: 0.7;
 						@include hpe-regular;
-						font-size: 18px;
-						line-height: 21px;
+						font-size: 15px;
+						line-height: 17px;
 					}
 				}
 			}
-		}
 
-		tr {
-			td {
-				&:only-child {
-					background-color: $lighter-gray;
+			p {
+				color: $dark-gray;
+				@include hpe-regular;
+				font-size: 17px;
+				line-height: 19px;
+				margin: 0 0 0 15px;
 
-					h4 {
-						color: $dark-gray;
-						@include hpe-bold;
-						font-size: 18px;
-						line-height: 21px;
-						margin: 0 0 0 15px;
-
-						small {
-							opacity: 0.7;
-							@include hpe-regular;
-							font-size: 15px;
-							line-height: 17px;
-						}
-					}
-				}
-
-				&:not(:first-child) {
-					width: 495px;
-				}
-
-				&:first-child {
-					width: 250px;
-				}
-
-				p {
-					color: $dark-gray;
-					@include hpe-regular;
-					font-size: 17px;
-					line-height: 19px;
-					margin: 0 0 0 15px;
-				}
-
-				.none {
+				&.none {
 					opacity: 0.4;
 					color: $dark-gray;
 					@include hpe-regular;
 					font-size: 17px;
 					line-height: 28px;
 				}
+			}
 
-				.program {
-					box-sizing: border-box;
-					border: 1px solid $table-border;
-					border-radius: 1px;
-					background-color: $program-gray;
-					box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
-					margin: 0 auto 10px auto;
+			.btn-program {
+				display: none;
+			}
 
-					.cta {
-						min-height: 72px;
-						width: 452px;
-						display: flex;
-						align-items: center;
+			.program,
+			.btn-program {
+				box-sizing: border-box;
+				border: 1px solid $table-border;
+				border-radius: 1px;
+				background-color: $program-gray;
+				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+				margin: 0 auto 10px auto;
+				width: 100%;
+				max-width: 450px;
+				padding: 15px;
 
-						svg {
-							margin: 17px 20px;
-						}
+				.cta {
+					min-height: 72px;
+					display: flex;
+					align-items: center;
 
-						p {
-							color: $dark;
-							@include hpe-regular;
-							font-size: 17px;
-							line-height: 18px;
-							margin: 0;
-						}
+					svg {
+						margin: 17px 20px 17px 2px;
+					}
 
-						.btn-trigger {
-							@include flexCenter;
-							flex-direction: column;
-							margin-left: auto;
-							padding: 0;
-							width: 26px;
-							height: 26px;
-							border: 2px solid $table-border;
-							border-radius: 50%;
+					p {
+						color: $dark;
+						@include hpe-regular;
+						font-size: 17px;
+						line-height: 18px;
+						margin: 0;
+					}
+
+					.btn-trigger {
+						@include flexCenter;
+						flex-direction: column;
+						margin-left: auto;
+						padding: 0;
+						width: 26px;
+						height: 26px;
+						border: 2px solid $table-border;
+						border-radius: 50%;
+						transition: 0.2s all ease;
+						transform: rotate(360deg);
+
+						span {
+							display: block;
+							background-color: $table-border;
+							width: 12px;
+							height: 2px;
+							position: relative;
 							transition: 0.2s all ease;
-							transform: rotate(360deg);
+							transform: rotate(0);
 
-							span {
-								display: block;
-								background-color: $table-border;
-								width: 12px;
-								height: 2px;
-								position: relative;
-								transition: 0.2s all ease;
-								transform: rotate(0);
-
-								&:nth-of-type(1) {
-									top: 1px;
-								}
-
-								&:nth-of-type(2) {
-									top: -1px;
-									transform: rotate(90deg);
-								}
+							&:nth-of-type(1) {
+								top: 1px;
 							}
 
-							&.collapsed {
-								transform: rotate(0);
+							&:nth-of-type(2) {
+								top: -1px;
+								transform: rotate(90deg);
+							}
+						}
 
-								span {
-									&:nth-of-type(2) {
-										top: -1px;
-										transform: rotate(0);
-									}
+						&.collapsed {
+							transform: rotate(0);
+
+							span {
+								&:nth-of-type(2) {
+									top: -1px;
+									transform: rotate(0);
 								}
 							}
 						}
 					}
+				}
 
-					.content {
-						padding: 20px;
-						display: none;
+				.content {
+					padding: 20px 20px 20px 5px;
+					display: none;
+
+					p {
+						color: $dark;
+						@include hpe-regular;
+						font-size: 14px;
+						line-height: 18px;
+						margin: 0;
+					}
+
+					h5 {
+						color: $dark;
+						@include hpe-bold;
+						font-size: 17px;
+						line-height: 18px;
+						margin: 12px 0;
+					}
+
+					.indentedList {
+						margin-bottom: 10px;
+						text-indent: -15px;
+						padding-left: 15px;
+
+						b {
+							color: $dark;
+							@include hpe-bold;
+						}
+					}
+
+					.btn-detail {
+						border-radius: 0 4px 0 4px;
+						background-color: $dark-blue;
+						height: 32px;
+						width: 128px;
+						color: $white;
+						@include hpe-bold;
+						font-size: 15px;
+						line-height: 17px;
+					}
+
+					&.collapsed {
+						display: block;
+					}
+				}
+			}
+
+			.info {
+				min-height: 80px;
+				width: 100%;
+				max-width: 450px;
+				background-color: $dark-blue;
+				@include flexCenter;
+				flex-direction: column;
+				margin: 0 auto;
+
+				span {
+					color: $white;
+					@include hpe-regular;
+					font-size: 17px;
+					line-height: 18px;
+				}
+
+				p {
+					color: $white;
+					@include hpe-regular;
+					font-size: 30px;
+					line-height: 35px;
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.compare {
+		.row {
+			.col {
+				padding: 10px;
+
+				&:not(:only-child):first-child {
+					max-width: 100px;
+				}
+			}
+		}
+		&-head {
+			.col {
+				&:first-child {
+					display: none;
+				}
+
+				h3 {
+					font-size: 20px;
+					line-height: 20px;
+
+					small {
+						display: block;
+						font-size: 16px;
+						line-height: 19px;
+					}
+				}
+			}
+		}
+
+		&-body {
+			.col {
+				&:only-child {
+					h4 {
+						font-size: 16px;
+						line-height: 20px;
+
+						small {
+							font-size: 14px;
+							line-height: 16px;
+						}
+					}
+				}
+
+				p {
+					font-size: 16px;
+					line-height: 18px;
+
+					&.none {
+						font-size: 16px;
+						line-height: 28px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.compare {
+
+		&-body {
+
+			.col {
+
+				.program {
+					display: none;
+				}
+
+				.btn-program {
+					display: block;
+					padding: 10px;
+
+					.cta {
+						flex-direction: column;
+
+						svg {
+							margin: 0 auto 10px;
+						}
 
 						p {
-							color: $dark;
-							@include hpe-regular;
-							font-size: 14px;
-							line-height: 18px;
-							margin: 0;
-						}
-
-						h5 {
-							color: $dark;
-							@include hpe-bold;
-							font-size: 17px;
-							line-height: 18px;
-							margin: 12px 0;
-						}
-
-						.indentedList {
-							margin-bottom: 10px;
-							text-indent: -15px;
-							padding-left: 15px;
-
-							b {
-								color: $dark;
-								@include hpe-bold;
-							}
-						}
-
-						.btn-detail {
-							border-radius: 0 4px 0 4px;
-							background-color: $dark-blue;
-							height: 32px;
-							width: 128px;
-							color: $white;
-							@include hpe-bold;
-							font-size: 15px;
+							font-size: 16px;
 							line-height: 17px;
-						}
-
-						&.collapsed {
-							display: block;
 						}
 					}
 				}
 
 				.info {
-					height: 80px;
-					width: 450px;
-					background-color: $dark-blue;
-					@include flexCenter;
-					flex-direction: column;
-					margin: 0 auto;
-
 					span {
-						color: $white;
-						@include hpe-regular;
-						font-size: 17px;
-						line-height: 18px;
+						font-size: 16px;
+						line-height: 17px;
 					}
 
 					p {
-						color: $white;
-						@include hpe-regular;
-						font-size: 30px;
-						line-height: 35px;
+						font-size: 18px;
+						line-height: 21px;
 						margin: 0;
 					}
 				}
 			}
 		}
 	}
+}
+
+@media (min-width: 768px) {
 }
 
 .discalimer {
@@ -433,8 +576,6 @@
 	}
 
 	.copy {
-		// padding-left: 0;
-
 		p {
 			color: $discalimer;
 			@include hpe-regular;

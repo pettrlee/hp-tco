@@ -37,7 +37,8 @@ const Footer = (props) => {
                     </Button>
                         <Button
                             variant="pdf"
-                            size="lg" >
+                            size="lg"
+                            onClick={props.GetPDF} >
                             Get Your PDF
                         </Button>
                     </Row>
