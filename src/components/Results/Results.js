@@ -39,7 +39,8 @@ export default class Results extends PureComponent {
 
     collapseToggle = (e) => {
         const name = e.target.name;
-        const value = this.state[name] === "collapsed" ? "" : "collapsed";
+        const value = e.target.value;
+        const collapsed = this.state[name] === "collapsed" ? "" : "collapsed";
 
         if (this.state[name]) {
             window.dataLayer.push({
@@ -49,7 +50,7 @@ export default class Results extends PureComponent {
             });
         }
         this.setState({
-            [name]: value
+            [name]: collapsed
         })
     }
 
