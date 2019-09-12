@@ -95,6 +95,11 @@ export default class Results extends PureComponent {
     componentDidMount() {
         // analytics data layer push
         window.dataLayer.push({
+            event: "e_compareModels",
+            concatProductIDs: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`
+        });
+
+        window.dataLayer.push({
             event: "e_pageView",
             pageNameL5: "A3 PageWide TCO Tool",
             pageNameL6: "Results",
@@ -103,12 +108,6 @@ export default class Results extends PureComponent {
             loginStatus: true,
             pageBusinessUnit: ""
         });
-
-        window.dataLayer.push({
-            event: "e_compareModels",
-            concatProductIDs: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`
-        });
-
     }
 
     componentWillUnmount() {
