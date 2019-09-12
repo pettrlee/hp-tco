@@ -13,6 +13,7 @@ const Footer = (props) => {
                 {!props.showResults ?
                     <Row>
                         <Button
+                            name="Next"
                             variant="next"
                             size="lg"
                             disabled={props.isValidForm ? false : true}
@@ -23,6 +24,7 @@ const Footer = (props) => {
                     :
                     <Row>
                         <Button
+                            name="Previous"
                             variant="prev"
                             size="lg"
                             onClick={props.ToggleView} >
@@ -34,6 +36,7 @@ const Footer = (props) => {
                             Previous
                         </Button>
                         <Button
+                            name="Get Your PDF"
                             variant="pdf"
                             size="lg"
                             onClick={props.GetPDF} >

@@ -55,8 +55,16 @@ class App extends Component {
 		})
 	}
 
-	ToggleView = () => {
+	ToggleView = (e) => {
 		const results = this.state.showResults ? false : true;
+		const linkplacement = this.state.showResults ? "Results" : "Select Device";
+		const linkID = e.target.name;
+
+		window.dataLayer.push({
+			'event': 'e_linkClick',
+			'linkPlacement': linkplacement,
+			'linkID': linkID
+		});
 
 		this.setState({
 			...this.state,
@@ -76,7 +84,7 @@ class App extends Component {
 						inputChange={this.handleInputChange}
 						handleCheckbox={this.handleCheckbox}
 						pagewideModel={this.state.pagewideModel}
-						pagewideMoneyback={this.statepagewideMoneyback}
+						pagewideMoneyback={this.state.pagewideMoneyback}
 						pagewideRecycle={this.state.pagewideRecycle}
 						competitiveBrand={this.state.competitiveBrand}
 						competitiveModel={this.state.competitiveModel}

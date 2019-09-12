@@ -41,12 +41,28 @@ export default class Results extends PureComponent {
         const name = e.target.name;
         const value = this.state[name] === "collapsed" ? "" : "collapsed";
 
+        if (this.state[name]) {
+            window.dataLayer.push({
+                'event': 'e_linkClick',
+                'linkPlacement': value,
+                'linkID': "Expanded"
+            });
+        }
         this.setState({
             [name]: value
         })
     }
 
-    GetPDF = () => {
+    GetPDF = (e) => {
+        const linkplacement = this.props.showResults ? "Results" : "Select Device";
+        const linkID = e.target.name;
+
+        window.dataLayer.push({
+            'event': 'e_linkClick',
+            'linkPlacement': linkplacement,
+            'linkID': linkID
+        });
+
         const filename = `HP-${this.state.hpModel}(${this.state.hpModelSpeed}ppm)-${this.state.hpModelPages}-pages__${this.state.competitiveBrand}-${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm)-${this.state.competitiveModelPages}-pages.pdf`;
 
         html2canvas(document.querySelector('#results'), {
@@ -71,11 +87,17 @@ export default class Results extends PureComponent {
             event: 'e_pageView',
             pageNameL5: 'A3 PageWide TCO Tool',
             pageNameL6: 'Results',
-            pageNameL7: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`,
+            pageNameL7: `Features: ${this.props.pagewideMoneyback && "120-Day “Love it or your Money Back”"} | ${this.props.pagewideRecycle && "Recycle my old printer/copier"}`,
             pageNameL8: '',
             loginStatus: true,
             pageBusinessUnit: ''
         });
+
+        window.dataLayer.push({
+            event: 'e_compareModels',
+            concatProductIDs: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`
+        });
+
     }
 
     componentWillUnmount() {
@@ -275,7 +297,8 @@ export default class Results extends PureComponent {
                                                     variant="trigger"
                                                     className={this.state.moneybacKToggle}
                                                     name="moneybacKToggle"
-                                                    onClick={this.collapseToggle}>
+                                                    value="120-Day “Love it or your Money Back”"
+                                                    onClick={this.collapseToggle} >
                                                     <span></span><span></span>
                                                 </Button>
                                             </div>
@@ -312,6 +335,7 @@ export default class Results extends PureComponent {
                                                 variant="trigger"
                                                 className={this.state.recycleToggle}
                                                 name="recycleToggle"
+                                                value="Recycle my old printer/copier"
                                                 onClick={this.collapseToggle} >
                                                 <span></span><span></span>
                                             </Button>
