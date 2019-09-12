@@ -1,13 +1,12 @@
-import React, { PureComponent } from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
-import './SelectForm.scss';
+import React, { PureComponent } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import "./SelectForm.scss";
 
-import Header from './../Header/Header';
-import Footer from './../Footer/Footer';
+import Header from "./../Header/Header";
+import Footer from "./../Footer/Footer";
 
 // IMAGES
-import HPlogo from './logo.png';
-// import ArrowDown from './arrowDown.png';
+import HPlogo from "./logo.png";
 
 export default class SelectForm extends PureComponent {
 
@@ -23,13 +22,13 @@ export default class SelectForm extends PureComponent {
     componentDidMount() {
         // analytics data layer push
         window.dataLayer.push({
-            event: 'e_pageView',
-            pageNameL5: 'A3 PageWide TCO Tool',
-            pageNameL6: 'Select Device',
-            pageNameL7: '',
-            pageNameL8: '',
+            event: "e_pageView",
+            pageNameL5: "A3 PageWide TCO Tool",
+            pageNameL6: "Select Device",
+            pageNameL7: "",
+            pageNameL8: "",
             loginStatus: true,
-            pageBusinessUnit: ''
+            pageBusinessUnit: ""
         });
     }
 

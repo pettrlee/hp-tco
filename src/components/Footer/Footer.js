@@ -1,9 +1,9 @@
-import React from 'react';
-import { Container, Row, Button } from 'react-bootstrap';
-import './Footer.scss'
+import React from "react";
+import { Container, Row, Button } from "react-bootstrap";
+import "./Footer.scss"
 
 // image
-import Back from './back.png';
+import Back from "./back.png";
 
 const Footer = (props) => {
     return (

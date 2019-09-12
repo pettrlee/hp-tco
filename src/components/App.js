@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import HP from './data/hp.json';
-import Competitive from './data/Competitive.json';
-import SelectForm from './SelectForm/SelectForm';
-import Results from './Results/Results';
+import React, { Component } from "react";
+import HP from "./data/hp.json";
+import Competitive from "./data/Competitive.json";
+import SelectForm from "./SelectForm/SelectForm";
+import Results from "./Results/Results";
 
 class App extends Component {
 	constructor(props) {
@@ -61,9 +61,9 @@ class App extends Component {
 		const linkID = e.target.name;
 
 		window.dataLayer.push({
-			'event': 'e_linkClick',
-			'linkPlacement': linkplacement,
-			'linkID': linkID
+			event: "e_linkClick",
+			linkPlacement: linkplacement,
+			linkID: linkID
 		});
 
 		this.setState({

@@ -1,22 +1,22 @@
-import React, { PureComponent } from 'react';
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import './Results.scss'
-import Header from '../Header/Header';
-import Footer from './../Footer/Footer';
+import React, { PureComponent } from "react";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import "./Results.scss"
+import Header from "../Header/Header";
+import Footer from "./../Footer/Footer";
 
 // image
-import { ReactComponent as Star } from './star.svg';
-import { ReactComponent as Printer } from './printer.svg';
-import pagewideImage from './pagewide.png'
-import Canon from './Canon.png';
-import Xerox from './Xerox.png';
-import Ricoh from './Ricoh.png';
-import Konica from './Konica.png';
-import Toshiba from './Toshiba.png';
-import Sharp from './Sharp.png';
-import Kyocera from './Kyocera.png';
+import { ReactComponent as Star } from "./star.svg";
+import { ReactComponent as Printer } from "./printer.svg";
+import pagewideImage from "./pagewide.png"
+import Canon from "./Canon.png";
+import Xerox from "./Xerox.png";
+import Ricoh from "./Ricoh.png";
+import Konica from "./Konica.png";
+import Toshiba from "./Toshiba.png";
+import Sharp from "./Sharp.png";
+import Kyocera from "./Kyocera.png";
 
 export default class Results extends PureComponent {
 
@@ -42,16 +42,27 @@ export default class Results extends PureComponent {
         const value = e.target.value;
         const collapsed = this.state[name] === "collapsed" ? "" : "collapsed";
 
-        if (this.state[name]) {
+        if (!this.state[name]) {
             window.dataLayer.push({
-                'event': 'e_linkClick',
-                'linkPlacement': value,
-                'linkID': "Expanded"
+                event: "e_linkClick",
+                linkPlacement: value,
+                linkID: "Expanded"
             });
         }
+
         this.setState({
             [name]: collapsed
         })
+    }
+
+    handleClick = (e) => {
+        const value = e.target.value;
+
+        window.dataLayer.push({
+            event: "e_linkClick",
+            linkPlacement: value,
+            linkID: "Full Details"
+        });
     }
 
     GetPDF = (e) => {
@@ -59,14 +70,14 @@ export default class Results extends PureComponent {
         const linkID = e.target.name;
 
         window.dataLayer.push({
-            'event': 'e_linkClick',
-            'linkPlacement': linkplacement,
-            'linkID': linkID
+            event: "e_linkClick",
+            linkPlacement: linkplacement,
+            linkID: linkID
         });
 
         const filename = `HP-${this.state.hpModel}(${this.state.hpModelSpeed}ppm)-${this.state.hpModelPages}-pages__${this.state.competitiveBrand}-${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm)-${this.state.competitiveModelPages}-pages.pdf`;
 
-        html2canvas(document.querySelector('#results'), {
+        html2canvas(document.querySelector("#results"), {
             logging: true,
             allowTaint: false,
             backgroundColor: "#ffffff",
@@ -76,8 +87,8 @@ export default class Results extends PureComponent {
             scrollX: 0,
             scrollY: 0
         }).then(function (canvas) {
-            let pdf = new jsPDF('', 'mm', [canvas.width, canvas.height]);
-            pdf.addImage(canvas.toDataURL('image/'), 'PNG', 0, 0);
+            let pdf = new jsPDF("", "mm", [canvas.width, canvas.height]);
+            pdf.addImage(canvas.toDataURL("image/"), "PNG", 0, 0);
             pdf.save(filename);
         });
     }
@@ -85,17 +96,17 @@ export default class Results extends PureComponent {
     componentDidMount() {
         // analytics data layer push
         window.dataLayer.push({
-            event: 'e_pageView',
-            pageNameL5: 'A3 PageWide TCO Tool',
-            pageNameL6: 'Results',
+            event: "e_pageView",
+            pageNameL5: "A3 PageWide TCO Tool",
+            pageNameL6: "Results",
             pageNameL7: `Features: ${this.props.pagewideMoneyback && "120-Day “Love it or your Money Back”"} | ${this.props.pagewideRecycle && "Recycle my old printer/copier"}`,
-            pageNameL8: '',
+            pageNameL8: "",
             loginStatus: true,
-            pageBusinessUnit: ''
+            pageBusinessUnit: ""
         });
 
         window.dataLayer.push({
-            event: 'e_compareModels',
+            event: "e_compareModels",
             concatProductIDs: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`
         });
 
@@ -126,9 +137,9 @@ export default class Results extends PureComponent {
         const fiveYearSaving = competitiveModelTco - hpModelTco;
         const annualSaving = fiveYearSaving / 5;
 
-        const formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
+        const formatter = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
             minimumFractionDigits: 3
         })
 
@@ -156,7 +167,7 @@ export default class Results extends PureComponent {
                     showResults={props.showResults}
                 />
                 <div id="results">
-                    <div id="my_mm" style={{height: "100mm", display: "none"}}></div>
+                    <div id="my_mm" style={{ height: "100mm", display: "none" }}></div>
                     <Container className="apc">
                         <Row>
                             <h2>Annual Printing Cost</h2>
@@ -261,10 +272,10 @@ export default class Results extends PureComponent {
                                 <p>Prints per month<sup>1</sup></p>
                             </Col>
                             <Col>
-                                <p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(hpModelPages)} pages</p>
+                                <p>{new Intl.NumberFormat("en-US", { currency: "USD" }).format(hpModelPages)} pages</p>
                             </Col>
                             <Col>
-                                <p>{new Intl.NumberFormat('en-US', { currency: 'USD' }).format(competitiveModelPages)} pages</p>
+                                <p>{new Intl.NumberFormat("en-US", { currency: "USD" }).format(competitiveModelPages)} pages</p>
                             </Col>
                         </Row>
                         <Row className="compare-body">
@@ -310,16 +321,19 @@ export default class Results extends PureComponent {
                                                 <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
                                                 <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
                                                 <Button
-                                                    variant="detail">
+                                                    variant="detail"
+                                                    value="120-Day “Love it or your Money Back”"
+                                                    onClick={this.handleClick} >
                                                     FULL DETAILS
                                                 </Button>
                                             </div>
                                         </div>
-
                                         <Button
-                                            variant="program">
+                                            variant="program"
+                                            value="120-Day “Love it or your Money Back”"
+                                            onClick={this.handleClick} >
                                             <div
-                                                className="cta" >
+                                                className="cta">
                                                 <Star />
                                                 <p>120-Day “Love it or your Money Back”</p>
                                             </div>
@@ -328,30 +342,44 @@ export default class Results extends PureComponent {
                                 }
 
                                 {props.pagewideRecycle &&
-                                    <div className="program">
-                                        <div className="cta">
-                                            <Printer />
-                                            <p>Recycle my old printer/copier</p>
-                                            <Button
-                                                variant="trigger"
-                                                className={this.state.recycleToggle}
-                                                name="recycleToggle"
-                                                value="Recycle my old printer/copier"
-                                                onClick={this.collapseToggle} >
-                                                <span></span><span></span>
-                                            </Button>
+                                    <div>
+                                        <div className="program">
+                                            <div className="cta">
+                                                <Printer />
+                                                <p>Recycle my old printer/copier</p>
+                                                <Button
+                                                    variant="trigger"
+                                                    className={this.state.recycleToggle}
+                                                    name="recycleToggle"
+                                                    value="Recycle my old printer/copier"
+                                                    onClick={this.collapseToggle} >
+                                                    <span></span><span></span>
+                                                </Button>
+                                            </div>
+                                            <div className={`content ${this.state.recycleToggle}`}>
+                                                <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
+                                                <h5>How it works</h5>
+                                                <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
+                                                <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
+                                                <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                                <Button
+                                                    variant="detail"
+                                                    value="Recycle my old printer/copier"
+                                                    onClick={this.handleClick} >
+                                                    FULL DETAILS
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div className={`content ${this.state.recycleToggle}`}>
-                                            <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                            <h5>How it works</h5>
-                                            <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                            <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                            <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                            <Button
-                                                variant="detail">
-                                                FULL DETAILS
+                                        <Button
+                                            variant="program"
+                                            value="Recycle my old printer/copier"
+                                            onClick={this.handleClick} >
+                                            <div
+                                                className="detail">
+                                                <Printer />
+                                                <p>Recycle my old printer/copier</p>
+                                            </div>
                                         </Button>
-                                        </div>
                                     </div>
                                 }
                             </Col>
