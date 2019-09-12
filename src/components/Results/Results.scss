@@ -373,7 +373,7 @@
 							}
 						}
 
-						&.collapsed {
+						&[aria-expanded="true"] {
 							transform: rotate(0);
 
 							span {
@@ -388,7 +388,6 @@
 
 				.content {
 					padding: 20px 20px 20px 5px;
-					display: none;
 
 					p {
 						color: $dark;
@@ -426,10 +425,6 @@
 						@include hpe-bold;
 						font-size: 15px;
 						line-height: 17px;
-					}
-
-					&.collapsed {
-						display: block;
 					}
 				}
 			}
