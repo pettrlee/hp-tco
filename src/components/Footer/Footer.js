@@ -10,19 +10,17 @@ const Footer = (props) => {
         <footer>
             <div className="brdr"></div>
             <Container>
-                {props.selectActive &&
+                {!props.showResults ?
                     <Row>
                         <Button
                             variant="next"
                             size="lg"
-                            disabled={props.FormCheck}
+                            disabled={props.isValidForm ? false : true}
                             onClick={props.ToggleView} >
                             Next
-                    </Button>
+                        </Button>
                     </Row>
-                }
-
-                {props.resultsActive &&
+                    :
                     <Row>
                         <Button
                             variant="prev"
@@ -34,7 +32,7 @@ const Footer = (props) => {
                                 src={Back}
                                 alt="Previous" />
                             Previous
-                    </Button>
+                        </Button>
                         <Button
                             variant="pdf"
                             size="lg"
@@ -43,7 +41,6 @@ const Footer = (props) => {
                         </Button>
                     </Row>
                 }
-
             </Container>
         </footer>
     );
