@@ -316,7 +316,7 @@ export default class Results extends PureComponent {
                                                 <span></span><span></span>
                                             </Button>
                                         </div>
-                                        <div className={`content ${this.state.moneybacKToggle}`}>
+                                        <div className={`content ${this.state.recycleToggle}`}>
                                             <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
                                             <h5>How it works</h5>
                                             <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
