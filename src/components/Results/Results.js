@@ -65,13 +65,10 @@ export default class Results extends PureComponent {
     }
 
     GetPDF = (e) => {
-        const linkplacement = this.props.showResults ? "Results" : "Select Device";
-        const linkID = e.target.name;
-
         window.dataLayer.push({
             event: "e_linkClick",
-            linkPlacement: linkplacement,
-            linkID: linkID
+            linkPlacement: "Results",
+            linkID: "Get Your PDF"
         });
 
         const filename = `HP-${this.state.hpModel}(${this.state.hpModelSpeed}ppm)-${this.state.hpModelPages}-pages__${this.state.competitiveBrand}-${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm)-${this.state.competitiveModelPages}-pages.pdf`;
