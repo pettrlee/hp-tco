@@ -1,24 +1,24 @@
 import React, { PureComponent } from "react";
-import { Container, Row, Col, Image, Button, Collapse } from "react-bootstrap";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-import "./Results.scss"
-import Header from "../Header/Header";
+import { Container, Row, Col, Image} from "react-bootstrap";
+import Header from "./../Header/Header";
 import Footer from "./../Footer/Footer";
+import BtnCollapse from "./BtnCollapse";
+import "./Results.scss";
 
 // image
-import { ReactComponent as Star } from "./star.svg";
-import { ReactComponent as Printer } from "./printer.svg";
-import pagewideImage from "./pagewide.png"
-import Canon from "./Canon.png";
-import Xerox from "./Xerox.png";
-import Ricoh from "./Ricoh.png";
-import Konica from "./Konica.png";
-import Toshiba from "./Toshiba.png";
-import Sharp from "./Sharp.png";
-import Kyocera from "./Kyocera.png";
+import { ReactComponent as Star } from "./images/star.svg";
+import { ReactComponent as Printer } from "./images/printer.svg";
+import pagewideImage from "./images/pagewide.png"
+import Canon from "./images/Canon.png";
+import Xerox from "./images/Xerox.png";
+import Ricoh from "./images/Ricoh.png";
+import Konica from "./images/Konica.png";
+import Toshiba from "./images/Toshiba.png";
+import Sharp from "./images/Sharp.png";
+import Kyocera from "./images/Kyocera.png";
 
 export default class Results extends PureComponent {
+
 
     constructor(props) {
         super(props);
@@ -31,62 +31,7 @@ export default class Results extends PureComponent {
             competitiveModel: props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].model,
             competitiveModelSpeed: props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].speed,
             competitiveModelPages: props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].pages,
-
-            moneybacKToggle: false,
-            recycleToggle: false
         };
-    }
-
-    handleCollapse = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-
-        if (!this.state[name]) {
-            window.dataLayer.push({
-                event: "e_linkClick",
-                linkPlacement: value,
-                linkID: "Expanded"
-            });
-        }
-
-        this.setState({
-            [name]: !this.state[name]
-        })
-    }
-
-    handleClick = (e) => {
-        const value = e.target.value;
-
-        window.dataLayer.push({
-            event: "e_linkClick",
-            linkPlacement: value,
-            linkID: "Full Details"
-        });
-    }
-
-    GetPDF = (e) => {
-        window.dataLayer.push({
-            event: "e_linkClick",
-            linkPlacement: "Results",
-            linkID: "Get Your PDF"
-        });
-
-        const filename = `HP-${this.state.hpModel}(${this.state.hpModelSpeed}ppm)-${this.state.hpModelPages}-pages__${this.state.competitiveBrand}-${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm)-${this.state.competitiveModelPages}-pages.pdf`;
-
-        html2canvas(document.querySelector("#results"), {
-            logging: true,
-            allowTaint: false,
-            backgroundColor: "#ffffff",
-            scale: 1,
-            x: 0,
-            y: 0,
-            scrollX: 0,
-            scrollY: 0
-        }).then(function (canvas) {
-            let pdf = new jsPDF("", "mm", [canvas.width, canvas.height]);
-            pdf.addImage(canvas.toDataURL("image/"), "PNG", 0, 0);
-            pdf.save(filename);
-        });
     }
 
     componentDidMount() {
@@ -139,27 +84,30 @@ export default class Results extends PureComponent {
         })
 
         const Logo = () => {
-            if (competitiveBrand === "Canon") {
-                return Canon;
-            } else if (competitiveBrand === "Xerox") {
-                return Xerox;
-            } else if (competitiveBrand === "Ricoh") {
-                return Ricoh;
-            } else if (competitiveBrand === "Konica Minolta") {
-                return Konica;
-            } else if (competitiveBrand === "Toshiba") {
-                return Toshiba;
-            } else if (competitiveBrand === "Sharp") {
-                return Sharp;
-            } else if (competitiveBrand === "Kyocera") {
-                return Kyocera;
+            switch (competitiveBrand) {
+                case "Canon":
+                    return Canon;
+                case "Xerox":
+                    return Xerox;
+                case "Ricoh":
+                    return Ricoh;
+                case "Konica Minolta":
+                    return Konica;
+                case "Toshiba":
+                    return Toshiba;
+                case "Sharp":
+                    return Sharp;
+                case "Kyocera":
+                    return Kyocera;
+                default:
+                    return Canon;
             }
         }
 
         return (
             <div>
                 <Header
-                    showResults={props.showResults}
+                    handleBack={props.handleBack}
                 />
                 <div id="results">
                     <div id="my_mm" style={{ height: "100mm", display: "none" }}></div>
@@ -295,85 +243,36 @@ export default class Results extends PureComponent {
                             </Col>
                             <Col>
                                 {props.pagewideMoneyback &&
-                                    <div className="program" >
-                                        <Button
-                                            variant="trigger"
-                                            className="mobile"
-                                            value="120-Day “Love it or your Money Back”"
-                                            onClick={this.handleClick} >
-                                            <Star />
-                                            <p>120-Day “Love it or your Money Back”</p>
-                                        </Button>
-                                        <Button
-                                            variant="trigger"
-                                            name="moneybacKToggle"
-                                            value="120-Day “Love it or your Money Back”"
-                                            aria-controls="moneybacKToggle"
-                                            aria-expanded={this.state.moneybacKToggle}
-                                            onClick={this.handleCollapse} >
-                                            <Star />
-                                            <p>120-Day “Love it or your Money Back”</p>
-                                            <div className="icon">
-                                                <span></span><span></span>
-                                            </div>
-                                        </Button>
-                                        <Collapse className="content" in={this.state.moneybacKToggle}>
-                                            <div id="moneybacKToggle">
+                                    <BtnCollapse
+                                        icon={<Star />}
+                                        value="moneybacKToggle"
+                                        name="120-Day “Love it or your Money Back”"
+                                        content={
+                                            <>
                                                 <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
                                                 <h5>How it works</h5>
                                                 <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
                                                 <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
                                                 <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                <Button
-                                                    variant="detail"
-                                                    value="120-Day “Love it or your Money Back”"
-                                                    onClick={this.handleClick} >
-                                                    FULL DETAILS
-                                                    </Button>
-                                            </div>
-                                        </Collapse>
-                                    </div>
+                                            </>
+                                        }
+                                    />
                                 }
-
                                 {props.pagewideRecycle &&
-                                    <div className="program" >
-                                        <Button
-                                            variant="trigger"
-                                            className="mobile"
-                                            value="Recycle my old printer/copier"
-                                            onClick={this.handleClick} >
-                                            <Printer />
-                                            <p>Recycle my old printer/copier</p>
-                                        </Button>
-                                        <Button
-                                            variant="trigger"
-                                            name="recycleToggle"
-                                            value="Recycle my old printer/copier"
-                                            aria-controls="recycleToggle"
-                                            aria-expanded={this.state.recycleToggle}
-                                            onClick={this.handleCollapse} >
-                                            <Printer />
-                                            <p>Recycle my old printer/copier</p>
-                                            <div className="icon">
-                                                <span></span><span></span>
-                                            </div>
-                                        </Button>
-                                        <Collapse className="content" in={this.state.recycleToggle}>
-                                            <div id="recycleToggle">
+                                    <BtnCollapse
+                                        icon={<Printer />}
+                                        value="recycleToggle"
+                                        name="Recycle my old printer/copier"
+                                        content={
+                                            <>
                                                 <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
                                                 <h5>How it works</h5>
                                                 <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
                                                 <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
                                                 <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
-                                                <Button
-                                                    variant="detail"
-                                                    value="Recycle my old printer/copier"
-                                                    onClick={this.handleClick} >
-                                                    FULL DETAILS
-                                                    </Button>
-                                            </div>
-                                        </Collapse>
-                                    </div>
+                                            </>
+                                        }
+                                    />
                                 }
                             </Col>
                             <Col>
@@ -407,9 +306,14 @@ export default class Results extends PureComponent {
                     </Container>
                 </div>
                 <Footer
-                    showResults={props.showResults}
-                    ToggleView={props.ToggleView}
-                    GetPDF={this.GetPDF}
+                    handleBack={props.handleBack}
+                    hpModel={hpModel}
+                    hpModelSpeed={hpModelSpeed}
+                    hpModelPages={hpModelPages}
+                    competitiveBrand={competitiveBrand}
+                    competitiveModel={competitiveModel}
+                    competitiveModelSpeed={competitiveModelSpeed}
+                    competitiveModelPages={competitiveModelPages}
                 />
             </div>
         );
