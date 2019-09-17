@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import HP from "./data/hp.json";
 import Competitive from "./data/Competitive.json";
-import SelectForm from "./SelectForm/SelectForm";
+import Home from "./Home/Home";
+import SelectDevice from "./SelectDevice/SelectDevice";
 import Results from "./Results/Results";
 
-class App extends Component {
+export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showResults: false,
 			isValidForm: false,
 			pagewideModel: "default",
 			competitiveBrand: "default",
@@ -20,7 +21,6 @@ class App extends Component {
 
 		this.handleCheckbox = this.handleCheckbox.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
-		this.ToggleView = this.ToggleView.bind(this);
 	}
 
 	handleCheckbox = (e) => {
@@ -54,60 +54,53 @@ class App extends Component {
 		})
 	}
 
-	ToggleView = (e) => {
-		const results = this.state.showResults;
-		const linkplacement = results ? "Results" : "Select Device";
-		const linkID = e.target.name;
-
-		window.dataLayer.push({
-			event: "e_linkClick",
-			linkPlacement: linkplacement,
-			linkID: linkID
-		});
-
-		this.setState({
-			...this.state,
-			showResults: !results
-		})
+	handleBack = () => {
+		window.history.back();
 	}
 
 	render() {
-
 		return (
-			<div>
-				{!this.state.showResults ?
-					<SelectForm
-						showResults={this.state.showResults}
-						hpData={HP.brands}
-						competitiveData={Competitive.brands}
-						inputChange={this.handleInputChange}
-						handleCheckbox={this.handleCheckbox}
-						pagewideModel={this.state.pagewideModel}
-						pagewideMoneyback={this.state.pagewideMoneyback}
-						pagewideRecycle={this.state.pagewideRecycle}
-						competitiveBrand={this.state.competitiveBrand}
-						competitiveModel={this.state.competitiveModel}
-						printPerMonth={this.state.printPerMonth}
-						isValidForm={this.state.isValidForm}
-						ToggleView={this.ToggleView}
+			<HashRouter>
+				<Route exact path="/" component={Home} />
+				<Switch>
+					<Route
+						exact
+						path="/select-device"
+						render={(props) =>
+							<SelectDevice {...props}
+								hpData={HP.brands}
+								competitiveData={Competitive.brands}
+								inputChange={this.handleInputChange}
+								handleCheckbox={this.handleCheckbox}
+								pagewideModel={this.state.pagewideModel}
+								pagewideMoneyback={this.state.pagewideMoneyback}
+								pagewideRecycle={this.state.pagewideRecycle}
+								competitiveBrand={this.state.competitiveBrand}
+								competitiveModel={this.state.competitiveModel}
+								printPerMonth={this.state.printPerMonth}
+								isValidForm={this.state.isValidForm}
+							/>}
 					/>
-					:
-					<Results
-						showResults={this.state.showResults}
-						hpData={HP.brands}
-						competitiveData={Competitive.brands}
-						pagewideModel={this.state.pagewideModel}
-						pagewideMoneyback={this.state.pagewideMoneyback}
-						pagewideRecycle={this.state.pagewideRecycle}
-						competitiveBrand={this.state.competitiveBrand}
-						competitiveModel={this.state.competitiveModel}
-						printPerMonth={this.state.printPerMonth}
-						ToggleView={this.ToggleView}
-					/>
-				}
-			</div>
+
+					{this.state.isValidForm &&
+						<Route
+							path="/results"
+							render={(props) =>
+								<Results {...props}
+									hpData={HP.brands}
+									competitiveData={Competitive.brands}
+									pagewideModel={this.state.pagewideModel}
+									pagewideMoneyback={this.state.pagewideMoneyback}
+									pagewideRecycle={this.state.pagewideRecycle}
+									competitiveBrand={this.state.competitiveBrand}
+									competitiveModel={this.state.competitiveModel}
+									printPerMonth={this.state.printPerMonth}
+									handleBack={this.handleBack}
+								/>}
+						/>
+					}
+				</Switch>
+			</HashRouter>
 		);
 	}
 }
-
-export default App;
