@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import HP from "./data/hp.json";
 import Competitive from "./data/Competitive.json";
 import Home from "./Home/Home";
@@ -81,24 +81,24 @@ export default class App extends Component {
 								isValidForm={this.state.isValidForm}
 							/>}
 					/>
-
-					{this.state.isValidForm &&
-						<Route
-							path="/results"
-							render={(props) =>
-								<Results {...props}
-									hpData={HP.brands}
-									competitiveData={Competitive.brands}
-									pagewideModel={this.state.pagewideModel}
-									pagewideMoneyback={this.state.pagewideMoneyback}
-									pagewideRecycle={this.state.pagewideRecycle}
-									competitiveBrand={this.state.competitiveBrand}
-									competitiveModel={this.state.competitiveModel}
-									printPerMonth={this.state.printPerMonth}
-									handleBack={this.handleBack}
-								/>}
-						/>
-					}
+					<Route
+						path="/results"
+						render={(props) => (this.state.isValidForm ?
+							<Results {...props}
+								hpData={HP.brands}
+								competitiveData={Competitive.brands}
+								pagewideModel={this.state.pagewideModel}
+								pagewideMoneyback={this.state.pagewideMoneyback}
+								pagewideRecycle={this.state.pagewideRecycle}
+								competitiveBrand={this.state.competitiveBrand}
+								competitiveModel={this.state.competitiveModel}
+								printPerMonth={this.state.printPerMonth}
+								handleBack={this.handleBack}
+							/>
+							:
+							<Redirect to="/select-device" />
+						)}
+					/>
 				</Switch>
 			</HashRouter>
 		);
