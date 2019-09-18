@@ -21,6 +21,8 @@ export default class SelectDevice extends PureComponent {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
+
         // analytics data layer push
         window.dataLayer.push({
             event: "e_pageView",
@@ -33,15 +35,13 @@ export default class SelectDevice extends PureComponent {
         });
     }
 
-    componentWillUnmount() {
-        window.scrollTo(0, 0)
-    }
-
     render() {
         const props = this.props
         return (
             <div>
                 <Header
+                    pageName={props.pageName}
+                    handleDataLayerPush={props.handleDataLayerPush}
                     isValidForm={props.isValidForm}
                     handleBack={props.handleBack}
                 />
@@ -171,6 +171,8 @@ export default class SelectDevice extends PureComponent {
                     </Container>
                 </Form>
                 <Footer
+                    pageName={props.pageName}
+                    handleDataLayerPush={props.handleDataLayerPush}
                     isValidForm={props.isValidForm}
                 />
             </div>

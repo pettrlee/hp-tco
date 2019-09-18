@@ -11,11 +11,7 @@ import Back from "./back.png";
 const Footer = (props) => {
 
     const GetPDF = (e) => {
-        window.dataLayer.push({
-            event: "e_linkClick",
-            linkPlacement: "Results",
-            linkID: "Get Your PDF"
-        });
+        props.handleDataLayerPush(e);
 
         const filename = `HP-${props.hpModel}(${props.hpModelSpeed}ppm)-${props.hpModelPages}-pages__${props.competitiveBrand}-${props.competitiveModel}(${props.competitiveModelSpeed}ppm)-${props.competitiveModelPages}-pages.pdf`;
 
@@ -35,6 +31,11 @@ const Footer = (props) => {
         });
     }
 
+    const handleClick = (e) => {
+        props.handleBack();
+        props.handleDataLayerPush(e);
+    }
+
     return (
         <footer>
             <div className="brdr"></div>
@@ -49,8 +50,10 @@ const Footer = (props) => {
                                         <Button
                                             as={Link}
                                             variant="next"
-                                            name="Next"
-                                            to="/results" >
+                                            data-linkid="Next"
+                                            data-linkplacement={props.pageName}
+                                            to="/results"
+                                            onClick={props.handleDataLayerPush.bind(this)} >
                                             Next
                                         </Button>
                                         :
@@ -73,9 +76,10 @@ const Footer = (props) => {
                             {match &&
                                 <Row>
                                     <Button
-                                        name="Previous"
+                                        data-linkid="Previous"
+                                        data-linkplacement={props.pageName}
                                         variant="prev"
-                                        onClick={props.handleBack} >
+                                        onClick={handleClick.bind(this)} >
                                         <img
                                             width={8}
                                             height={14}
@@ -84,6 +88,8 @@ const Footer = (props) => {
                                         Previous
                                     </Button>
                                     <Button
+                                        data-linkid="Get Your PDF"
+                                        data-linkplacement={props.pageName}
                                         variant="pdf"
                                         onClick={GetPDF.bind(this)} >
                                         Get Your PDF

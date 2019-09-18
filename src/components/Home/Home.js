@@ -6,7 +6,7 @@ import "./Home.scss";
 // IMAGES
 import Printer from "./Printer.png";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div id="banner">
             <Container>
@@ -18,6 +18,9 @@ const Home = () => {
                         <h1>What am I likely paying for color pages?</h1>
                         <p>See how HP Pagewide delivers the lowest cost per color page.</p>
                         <Button
+                            data-linkid="Calculate Your PageWide Savings"
+                            data-linkplacement="Home"
+                            onClick={props.handleDataLayerPush.bind(this)}
                             as={Link}
                             variant="calculate"
                             to="/select-device" >

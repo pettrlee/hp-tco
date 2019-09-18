@@ -5,40 +5,28 @@ const BtnCollapse = (props) => {
     const [open, setOpen] = useState(false);
 
     const handleCollapse = (e) => {
-        const value = e.currentTarget.value;
         if (!open) {
-            window.dataLayer.push({
-                event: "e_linkClick",
-                linkPlacement: value,
-                linkID: "Expanded"
-            });
+            props.handleDataLayerPush(e);
         }
 
         setOpen(!open)
     }
 
-    const handleClick = (e) => {
-        const value = e.currentTarget.value;
-        window.dataLayer.push({
-            event: "e_linkClick",
-            linkPlacement: value,
-            linkID: "Full Details"
-        });
-    }
-
     return (
         <div className="program" >
             <Button
+                data-linkid="Full Details"
+                data-linkplacement={props.name}
                 variant="trigger"
                 className="mobile"
-                value={props.name}
-                onClick={handleClick.bind(this)} >
+                onClick={props.handleDataLayerPush.bind(this)}>
                 {props.icon}
                 <p>{props.name}</p>
             </Button>
             <Button
+                data-linkid="Expanded"
+                data-linkplacement={props.name}
                 variant="trigger"
-                value={props.name}
                 aria-controls={props.value}
                 aria-expanded={open}
                 onClick={handleCollapse.bind(this)} >
@@ -52,9 +40,10 @@ const BtnCollapse = (props) => {
                 <div id={props.value}>
                     {props.content}
                     <Button
+                        data-linkid="Full Details"
+                        data-linkplacement={props.name}
                         variant="detail"
-                        value={props.name}
-                        onClick={handleClick.bind(this)} >
+                        onClick={props.handleDataLayerPush.bind(this)}>
                         FULL DETAILS
                 </Button>
                 </div>

@@ -35,25 +35,29 @@ export default class Results extends PureComponent {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
+
+        const pagewide = `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages`;
+        const competitive = `${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`;
+
+        const moneyback = this.props.pagewideMoneyback ? "120-Day “Love it or your Money Back”" : "";
+        const recycle = this.props.pagewideRecycle ? "Recycle my old printer/copier" : "";
+
         // analytics data layer push
         window.dataLayer.push({
             event: "e_compareModels",
-            concatProductIDs: `HP ${this.state.hpModel}(${this.state.hpModelSpeed}ppm) ${this.state.hpModelPages} pages | ${this.state.competitiveBrand} ${this.state.competitiveModel}(${this.state.competitiveModelSpeed}ppm) ${this.state.competitiveModelPages} pages`
+            concatProductIDs: `${pagewide} | ${competitive}`
         });
 
         window.dataLayer.push({
             event: "e_pageView",
             pageNameL5: "A3 PageWide TCO Tool",
             pageNameL6: "Results",
-            pageNameL7: `Features: ${this.props.pagewideMoneyback && "120-Day “Love it or your Money Back”"} | ${this.props.pagewideRecycle && "Recycle my old printer/copier"}`,
+            pageNameL7: `Features: ${moneyback}${(moneyback && recycle) ? " | " : "" }${recycle}`,
             pageNameL8: "",
             loginStatus: true,
             pageBusinessUnit: ""
         });
-    }
-
-    componentWillUnmount() {
-        window.scrollTo(0, 0)
     }
 
     render() {
@@ -107,6 +111,8 @@ export default class Results extends PureComponent {
         return (
             <div>
                 <Header
+                    pageName={props.pageName}
+                    handleDataLayerPush={props.handleDataLayerPush}
                     handleBack={props.handleBack}
                 />
                 <div id="results">
@@ -244,6 +250,8 @@ export default class Results extends PureComponent {
                             <Col>
                                 {props.pagewideMoneyback &&
                                     <BtnCollapse
+                                        pageName={props.pageName}
+                                        handleDataLayerPush={props.handleDataLayerPush}
                                         icon={<Star />}
                                         value="moneybacKToggle"
                                         name="120-Day “Love it or your Money Back”"
@@ -260,6 +268,8 @@ export default class Results extends PureComponent {
                                 }
                                 {props.pagewideRecycle &&
                                     <BtnCollapse
+                                        pageName={props.pageName}
+                                        handleDataLayerPush={props.handleDataLayerPush}
                                         icon={<Printer />}
                                         value="recycleToggle"
                                         name="Recycle my old printer/copier"
@@ -306,7 +316,9 @@ export default class Results extends PureComponent {
                     </Container>
                 </div>
                 <Footer
+                    pageName={props.pageName}
                     handleBack={props.handleBack}
+                    handleDataLayerPush={props.handleDataLayerPush}
                     hpModel={hpModel}
                     hpModelSpeed={hpModelSpeed}
                     hpModelPages={hpModelPages}

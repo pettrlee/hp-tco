@@ -8,13 +8,25 @@ import printerLogo from "./images/printer.png";
 import resultLogo from "./images/result.png";
 
 const Header = (props) => {
+
+    const handleClick = (e) => {
+        props.handleBack();
+        props.handleDataLayerPush(e);
+    }
+
     return (
         <header>
             <Container>
                 <Row>
                     <Col xs={12} md={6} className="brand">
                         <h1>
-                            <Link to="/">A3 PageWide TCO Tool</Link>
+                            <Link
+                                data-linkid="A3 PageWide TCO Tool"
+                                data-linkplacement={props.pageName}
+                                onClick={props.handleDataLayerPush.bind(this)}
+                                to="/" >
+                                A3 PageWide TCO Tool
+                            </Link>
                         </h1>
                     </Col>
                     <Col xs={6} sm={6} md={3} className="nav-item">
@@ -33,8 +45,10 @@ const Header = (props) => {
                                         </span>
                                         :
                                         <Button
+                                            data-linkid="Select Device"
+                                            data-linkplacement={props.pageName}
                                             variant=""
-                                            onClick={props.handleBack} >
+                                            onClick={handleClick.bind(this)} >
                                             <img
                                                 width={40}
                                                 height={32}
@@ -64,7 +78,11 @@ const Header = (props) => {
                                         :
                                         <>
                                             {props.isValidForm ?
-                                                <Link to="/results">
+                                                <Link
+                                                    data-linkid="Results"
+                                                    data-linkplacement={props.pageName}
+                                                    onClick={props.handleDataLayerPush.bind(this)}
+                                                    to="/results" >
                                                     <img
                                                         width={40}
                                                         height={37}

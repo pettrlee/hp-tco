@@ -58,16 +58,35 @@ export default class App extends Component {
 		window.history.back();
 	}
 
+	handleDataLayerPush = (e) => {
+		const linkid = e.currentTarget.dataset.linkid;
+		const linkplacement = e.currentTarget.dataset.linkplacement;
+
+		window.dataLayer.push({
+			event: "e_linkClick",
+			linkPlacement: linkplacement,
+			linkID: linkid
+		});
+	}
+
 	render() {
 		return (
 			<HashRouter>
-				<Route exact path="/" component={Home} />
 				<Switch>
+					<Route
+						exact
+						path="/"
+						render={(props) =>
+							<Home {...props}
+								handleDataLayerPush={this.handleDataLayerPush}
+							/>}
+					 />
 					<Route
 						exact
 						path="/select-device"
 						render={(props) =>
 							<SelectDevice {...props}
+								pageName="Select Device"
 								hpData={HP.brands}
 								competitiveData={Competitive.brands}
 								inputChange={this.handleInputChange}
@@ -79,12 +98,14 @@ export default class App extends Component {
 								competitiveModel={this.state.competitiveModel}
 								printPerMonth={this.state.printPerMonth}
 								isValidForm={this.state.isValidForm}
+								handleDataLayerPush={this.handleDataLayerPush}
 							/>}
 					/>
 					<Route
 						path="/results"
 						render={(props) => (this.state.isValidForm ?
 							<Results {...props}
+								pageName="Results"
 								hpData={HP.brands}
 								competitiveData={Competitive.brands}
 								pagewideModel={this.state.pagewideModel}
@@ -94,6 +115,7 @@ export default class App extends Component {
 								competitiveModel={this.state.competitiveModel}
 								printPerMonth={this.state.printPerMonth}
 								handleBack={this.handleBack}
+								handleDataLayerPush={this.handleDataLayerPush}
 							/>
 							:
 							<Redirect to="/select-device" />
