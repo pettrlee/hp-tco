@@ -14,8 +14,8 @@ export default class Home extends PureComponent {
         // analytics data layer push
         window.dataLayer.push({
             event: "e_pageView",
-            pageNameL5: "A3 PageWide TCO Tool",
-            pageNameL6: "",
+            pageNameL5: "A3 PageWide TCO",
+            pageNameL6: "Landing",
             pageNameL7: "",
             pageNameL8: "",
             loginStatus: true,
