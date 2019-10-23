@@ -19,7 +19,9 @@ const BtnCollapse = (props) => {
                 data-linkplacement={props.name}
                 variant="trigger"
                 className="mobile"
-                onClick={props.handleDataLayerPush.bind(this)}>
+                onClick={props.handleDataLayerPush.bind(this)}
+                href={props.link}
+                target="_blank" >
                 {props.icon}
                 <p>{props.name}</p>
             </Button>
@@ -43,9 +45,11 @@ const BtnCollapse = (props) => {
                         data-linkid="Full Details"
                         data-linkplacement={props.name}
                         variant="detail"
-                        onClick={props.handleDataLayerPush.bind(this)}>
+                        onClick={props.handleDataLayerPush.bind(this)}
+                        href={props.link}
+                        target="_blank" >
                         FULL DETAILS
-                </Button>
+                    </Button>
                 </div>
             </Collapse>
         </div>

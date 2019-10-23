@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Container, Row, Col, Image} from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import Header from "./../Header/Header";
 import Footer from "./../Footer/Footer";
 import BtnCollapse from "./BtnCollapse";
@@ -53,7 +53,7 @@ export default class Results extends PureComponent {
             event: "e_pageView",
             pageNameL5: "A3 PageWide TCO Tool",
             pageNameL6: "Results",
-            pageNameL7: `Features: ${moneyback}${(moneyback && recycle) ? " | " : "" }${recycle}`,
+            pageNameL7: `Features: ${moneyback}${(moneyback && recycle) ? " | " : ""}${recycle}`,
             pageNameL8: "",
             loginStatus: true,
             pageBusinessUnit: ""
@@ -255,6 +255,7 @@ export default class Results extends PureComponent {
                                         icon={<Star />}
                                         value="moneybacKToggle"
                                         name="120-Day “Love it or your Money Back”"
+                                        link="https://h41201.www4.hp.com/WMCF.Web/us/en/static/1/17920/Landingpage/?channelfriendly=true"
                                         content={
                                             <>
                                                 <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
@@ -273,13 +274,10 @@ export default class Results extends PureComponent {
                                         icon={<Printer />}
                                         value="recycleToggle"
                                         name="Recycle my old printer/copier"
+                                        link="https://h41201.www4.hp.com/WMCF.Web/us/en/landing/?jumpid=reg_r1002_usen_c-001_title_r0004"
                                         content={
                                             <>
-                                                <p>Simply buy any qualifying HP PageWide Family printer and test it within your business. If you're not 100% convinced of the benefits, return the product to HP - within one hundred and twenty (120) days - for a full refund.* </p>
-                                                <h5>How it works</h5>
-                                                <p className="indentedList"><b>1. Purchase</b> a qualifying HP PageWide Family printer between November 01, 2018 and October 31, 2019.</p>
-                                                <p className="indentedList"><b>2. Register</b> your HP PageWide Family printer. Registration of the new HP PageWide Family printer is required in order to participate and must be done within twenty-one (21) days of the purchase. Purchases and invoices dated prior to, or after this timeframe will not be eligible for this promotion.</p>
-                                                <p className="indentedList"><b>3. Return</b> if you are not completely satisfied. Refer to your registration email and click on the link inside for a no hassle return. Apply to return the product within one hundred and twenty (120) calendar days after purchase date (not after registration date). You must ship the product back in the original packaging.</p>
+                                                <p>With a full line-up of energy efficient printers from HP, you can conserve energy without sacrificing features or performance. Now HP makes recycling even easier. Purchase an eligible new HP printer and we’ll recycle your old printer for free. That’s HP Printing with the environment in mind.</p>
                                             </>
                                         }
                                     />
