@@ -66,17 +66,17 @@ export default class Results extends PureComponent {
         const hpModel = this.state.hpModel;
         const hpModelSpeed = this.state.hpModelSpeed;
         const hpModelPages = this.state.hpModelPages;
-        const hpModelTco = Math.trunc(props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].tco);
+        const hpModelTco = props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].tco.toFixed(2);
         const hpModelTcoAnnual = hpModelTco / 5;
-        const hpModelCpp = props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].cpp;
+        const hpModelCpp = props.hpData[0].printers[props.pagewideModel].data[props.printPerMonth].cpp.toFixed(2);
 
         const competitiveBrand = this.state.competitiveBrand;
         const competitiveModel = this.state.competitiveModel;
         const competitiveModelSpeed = this.state.competitiveModelSpeed;
         const competitiveModelPages = this.state.competitiveModelPages;
-        const competitiveModelTco = Math.trunc(props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].tco);
+        const competitiveModelTco = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].tco.toFixed(2);
         const competitiveModelTcoAnnual = competitiveModelTco / 5;
-        const competitiveModelCpp = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].cpp;
+        const competitiveModelCpp = props.competitiveData[props.competitiveBrand].printers[props.competitiveModel].data[props.printPerMonth].cpp.toFixed(2);
 
         const fiveYearSaving = competitiveModelTco - hpModelTco;
         const annualSaving = fiveYearSaving / 5;
@@ -84,7 +84,7 @@ export default class Results extends PureComponent {
         const formatter = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
-            minimumFractionDigits: 3
+            minimumFractionDigits: 2
         })
 
         const Logo = () => {
@@ -232,10 +232,10 @@ export default class Results extends PureComponent {
                                 <p>Cost per Page<sup>2</sup></p>
                             </Col>
                             <Col>
-                                <p>${hpModelCpp}</p>
+                                <p>{formatter.format(hpModelCpp)}</p>
                             </Col>
                             <Col>
-                                <p>${competitiveModelCpp}</p>
+                                <p>{formatter.format(competitiveModelCpp)}</p>
                             </Col>
                         </Row>
                         <Row className="compare-body" data-html2canvas-ignore>
